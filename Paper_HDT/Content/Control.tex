@@ -1,0 +1,22 @@
+Since we have access to all of the states of the system, we can implement a state feedback control strategy. The control law is given by:
+\begin{align}
+    u(t) &= -\mathbf{K}_x x(t) + \mathbf{K}_r r(t) + \mathbf{K}_{err} \int (r(t) - y(t)) dt
+\end{align}
+where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_r$ is the resonance gain matrix, $\mathbf{K}_{err}$ is the integral gain matrix, $r$ is the reference input vector, and $y$ is the output vector. The matrices $\mathbf{K}_x$, $\mathbf{K}_r$, and $\mathbf{K}_{err}$ are designed using LQR, which solves the Riccati equation to minimize the cost function:
+\begin{equation}
+    J = \int_0^\infty (x^T \mathbf{Q} x + u^T \mathbf{R} u) dt
+\end{equation}
+where $\mathbf{Q}$ is the state weighting matrix and $\mathbf{R}$ is the control weighting matrix. The selection of $\mathbf{Q}$ and $\mathbf{R}$ affects the performance of the controller, and they can be tuned using PSO to achieve the desired transient response and steady-state error. The PSO algorithm optimizes the elements of $\mathbf{Q}$ and $\mathbf{R}$ by minimizing a cost function that considers overshoot, settling time, and steady-state error.
+
+\subsection{Particle Swarm Optimization}
+
+The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
+\begin{align}
+    \begin{aligned}
+        v_i(t+1) &= w v_i(t) + c_1 r_1 (pbest_i - x_i(t))\\
+        &+ c_2 r_2 (gbest - x_i(t)) \\
+        x_i(t+1) &= x_i(t) + v_i(t+1)
+    \end{aligned}
+\end{align}
+where $v_i(t)$ is the velocity of particle $i$ at time $t$, $x_i(t)$ is the position of particle $i$ at time $t$, $pbest_i$ is the best position found by particle $i$, $gbest$ is the best position found by the entire swarm, $w$ is the inertia weight, $c_1$ and $c_2$ are cognitive and social coefficients, and $r_1$ and $r_2$ are random numbers between 0 and 1.
+The PSO algorithm iteratively updates the positions and velocities of the particles until a stopping criterion is met, such as a maximum number of iterations or a satisfactory solution. The best solution found by the swarm is then used to design the state feedback controller for the HDT.

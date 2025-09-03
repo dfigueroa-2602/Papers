@@ -1,0 +1,48 @@
+% !TEX root = Paper.tex
+\input{Packages.tex}
+\input{Configuration.tex}
+\begin{document}
+
+\input{Title.tex}
+
+\maketitle
+
+\begin{abstract}
+Here will be the abstract of the paper.
+\end{abstract}
+
+\begin{IEEEkeywords}
+    hybrid distribution transformer, optimal control, particle swarm optimization
+\end{IEEEkeywords}
+
+\section{Introduction}
+ń
+\input{Content/Introduction.tex}
+
+\section{Model of the Hybrid Distribution Transformer}
+
+\input{Content/Model_HDT.tex}
+
+\section{Control Strategy}
+
+\input{Content/Control.tex}
+
+\section{Simulation Results}
+
+\input{Content/SimResults.tex}
+
+\section{Conclusions}
+
+% Use \eqref{label}
+
+% Please don't use the \verb|{eqnarray}| equation environment. Use
+% \verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
+% environment leaves unsightly spaces around relation symbols.
+
+% \item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
+% \item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
+
+\bibliographystyle{IEEEtran}
+\bibliography{bib.bib}
+
+\end{document}

@@ -1,0 +1,1 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qhybrid distribution transformer, optimal control, particle swarm optimization\\E$"}

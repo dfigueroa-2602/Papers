@@ -1,0 +1,112 @@
+\subsection{Series Converter}
+
+\begin{align}
+    \begin{aligned}
+        v_s &= R_{fs}i_{fs} + L_{fs}\dfrac{d\,i_{fs}}{dt} + v_{cs} \\
+        i_{fs} &= C_{fs}\dfrac{d\,v_{cs}}{dt} + i_g \\
+    \end{aligned}
+\end{align}
+
+Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
+
+\begin{align}
+    \begin{aligned}
+        \dfrac{d\,i_{fs}}{dt} &= -\dfrac{R_{fs}}{L_{fs}}i_{fs} - \dfrac{1}{L_{fs}}v_{cs} + \dfrac{1}{L_{fs}}v_s \\
+        \dfrac{d\,v_{cs}}{dt} &= -\dfrac{1}{C_{fs}}i_{fs} + \dfrac{1}{C_{fs}}i_g
+    \end{aligned}
+\end{align}
+
+\subsection{Parallel Converter}
+
+\begin{align}
+    \begin{aligned}
+        v_p &= R_{fp}i_{fp} + L_{fp}\dfrac{d\,i_{fp}}{dt} + v_{cp} \\
+        i_{fp} &= C_{fp}\dfrac{d\,v_{cp}}{dt} - i_Y + i_L
+    \end{aligned}
+\end{align}
+
+Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
+
+\begin{align}
+    \begin{aligned}
+        \dfrac{d\,i_{fp}}{dt} &= -\dfrac{R_{fp}}{L_{fp}}i_{fp} - \dfrac{1}{L_{fp}}v_{cp} + \dfrac{1}{L_{fp}}v_p \\
+        \dfrac{d\,v_{cp}}{dt} &= \dfrac{1}{C_{fp}}i_{fp} - \dfrac{1}{C_{fp}}i_Y + \dfrac{1}{C_{fp}}i_L
+    \end{aligned}
+\end{align}
+
+\subsection{Distribution Transformer}
+
+The transformer is connected in $\Delta-Y$ configuration, with the series converter connected to the delta side, and the parallel converter connected to the $Y$ side. The transformer equations are given by:
+
+\begin{align}
+    \begin{aligned}
+        v_{Ya} &= N_{LFT}(v_{\Delta a} - v_{\Delta b}) \\
+        v_{Yb} &= N_{LFT}(v_{\Delta b} - v_{\Delta c}) \\
+        v_{Yc} &= N_{LFT}(v_{\Delta c} - v_{\Delta a})
+    \end{aligned}
+\end{align}
+This can be expressed in matrix form as:
+\begin{align}
+    \begin{aligned}
+        v_Y &= N_{LFT}
+        \underbrace{
+        \begin{bmatrix}
+            1 & -1 & 0 \\
+            0 & 1 & -1 \\
+            -1 & 0 & 1
+        \end{bmatrix}
+        }_{K_T'}
+        v_{\Delta}\\
+        v_Y &= N_{LFT} K_T' v_{\Delta}
+    \end{aligned}
+\end{align}
+The dynamics of the transformer can be expressed as:
+\begin{align}
+    v_{Y} &= R_Yi_Y + L_Y\dfrac{d\,i_Y}{dt} + v_{cp} \\
+    \intertext{Assuming that there is no zero-sequence current, the transformer model can be expressed in $\alpha\beta$ coordinates as:}
+    \dfrac{d\,i_Y}{dt} &= -\dfrac{R_Y}{L_Y}i_Y - \dfrac{1}{L_Y}v_{cp} + \dfrac{1}{L_Y}N_{LFT}K_T'v_{\Delta}
+\end{align}
+
+\subsection{Overall HDT Model}
+The overall HDT model can be expressed in state-space form as:
+\begin{align}
+    \begin{aligned}
+        \dfrac{d}{dt}
+        \begin{bmatrix}
+            x_s\\
+            x_p
+        \end{bmatrix}
+        &=
+        \begin{bmatrix}
+            \mathbf{A}_s & \mathbf{P}_{ig}\mathbf{M}_p \\
+            \mathbf{P}_{vc}\mathbf{M}_s & \mathbf{A}_p
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_s\\
+            x_p
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            \mathbf{B}_s & \mathbf{0} \\
+            \mathbf{0} & \mathbf{B}_p
+        \end{bmatrix}
+        \begin{bmatrix}
+            u_s\\
+            u_p 
+        \end{bmatrix}
+        \\
+        &+
+        \begin{bmatrix}
+            \mathbf{0}\\
+            \mathbf{P}_{vg}
+        \end{bmatrix}
+        v_g
+        +
+        \begin{bmatrix}
+            \mathbf{0}\\
+            \mathbf{P}_{iL}
+        \end{bmatrix}
+        i_L
+    \end{aligned}
+\end{align}
+where the matrices $\mathbf{M}_p = \begin{bmatrix}\mathbf{0} & \mathbf{I} & \mathbf{0}\end{bmatrix}$ and $\mathbf{M}_s = \begin{bmatrix}\mathbf{0} & \mathbf{I}\end{bmatrix}$ are used to select the appropriate states from the parallel and series converter state vectors respectively.
