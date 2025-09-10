@@ -1,12 +1,70 @@
 Since we have access to all of the states of the system, we can implement a state feedback control strategy. The control law is given by:
-\begin{align}
-    u(t) &= -\mathbf{K}_x x(t) + \mathbf{K}_r r(t) + \mathbf{K}_{err} \int (r(t) - y(t)) dt
-\end{align}
-where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_r$ is the resonance gain matrix, $\mathbf{K}_{err}$ is the integral gain matrix, $r$ is the reference input vector, and $y$ is the output vector. The matrices $\mathbf{K}_x$, $\mathbf{K}_r$, and $\mathbf{K}_{err}$ are designed using LQR, which solves the Riccati equation to minimize the cost function:
 \begin{equation}
-    J = \int_0^\infty (x^T \mathbf{Q} x + u^T \mathbf{R} u) dt
+    u_k = -\mathbf{K}_x x_k + \mathbf{K}_r \rho_k + \mathbf{K}_u u_{k - 1}
 \end{equation}
-where $\mathbf{Q}$ is the state weighting matrix and $\mathbf{R}$ is the control weighting matrix. The selection of $\mathbf{Q}$ and $\mathbf{R}$ affects the performance of the controller, and they can be tuned using PSO to achieve the desired transient response and steady-state error. The PSO algorithm optimizes the elements of $\mathbf{Q}$ and $\mathbf{R}$ by minimizing a cost function that considers overshoot, settling time, and steady-state error.
+where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_r$ is the resonant states gain matrix and $\mathbf{K}_u$ is the previous control input gain matrix. 
+
+The resonant states are included to ensure zero steady-state error for sinusoidal references and disturbances. The resonant states dynamics are given by:
+\begin{equation}
+    \dfrac{d\,\rho(t)}{dt} = 
+    \underbrace{
+    \begin{bmatrix}
+        -\xi\omega & \omega \\
+        -\omega & \xi\omega
+    \end{bmatrix}
+    }_{\mathbf{A}_r}
+    \rho(t) + 
+    \underbrace{
+    \begin{bmatrix}
+        1\\
+        0
+    \end{bmatrix}
+    }_{\mathbf{B}_r}
+    e(t)
+\end{equation}
+where $\omega$ is the nominal angular frequency, $\xi$ is the damping factor, and $e(t)$ is the error signal defined as the difference between the reference and the measured output. Each of the references signals has two resonant states associated with it, meaning that for the HDT control, there are eight resonant states in total (4 for the $ev_{cs,\alpha\beta}$ and 4 for the $i_{fp,\alpha\beta}$). This can be expressed as:
+\begin{align}
+    \dfrac{d\,\rho(t)}{dt} &= \text{blkdiag}(\mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r)\rho(t)\\
+    &+ \text{blkdiag}(\mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r)e(t)
+\end{align}
+
+The augmented state-space model of the HDT can be expressed as:
+\begin{align}
+    \begin{aligned}
+        \dfrac{d}{dt}
+        \begin{bmatrix}
+            x\\
+            \rho
+        \end{bmatrix}
+        &=
+        \begin{bmatrix}
+            \mathbf{A} & \mathbf{0} \\
+            \mathbf{B}_r\mathbf{H} & \mathbf{A}_r
+        \end{bmatrix}
+        \begin{bmatrix}
+            x\\
+            \rho
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            \mathbf{B}_{d,\text{aug}}\\
+            \mathbf{0}
+        \end{bmatrix}
+        \begin{bmatrix}
+            u\\
+            e
+        \end{bmatrix}
+        \\
+        y &= 
+        \begin{bmatrix}
+            \mathbf{C} & \mathbf{0}
+        \end{bmatrix}
+        \begin{bmatrix}
+            x\\
+            \rho
+        \end{bmatrix}
+    \end{aligned}
+\end{align}
 
 \subsection{Particle Swarm Optimization}
 

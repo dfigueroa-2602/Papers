@@ -9,6 +9,13 @@
 
 Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
 
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/HDT_Diagram.pdf} 
+    \caption{Hybrid distribution transformer circuit diagram.}
+    \label{fig:HDT_Transformer}
+\end{figure*}
+
 \begin{align}
     \begin{aligned}
         \dfrac{d\,i_{fs}}{dt} &= -\dfrac{R_{fs}}{L_{fs}}i_{fs} - \dfrac{1}{L_{fs}}v_{cs} + \dfrac{1}{L_{fs}}v_s \\
@@ -72,41 +79,94 @@ The overall HDT model can be expressed in state-space form as:
 \begin{align}
     \begin{aligned}
         \dfrac{d}{dt}
+        \underbrace{
         \begin{bmatrix}
             x_s\\
             x_p
         \end{bmatrix}
+        }_{x}
         &=
+        \underbrace{
         \begin{bmatrix}
             \mathbf{A}_s & \mathbf{P}_{ig}\mathbf{M}_p \\
             \mathbf{P}_{vc}\mathbf{M}_s & \mathbf{A}_p
         \end{bmatrix}
+        }_{\mathbf{A}}
+        \underbrace{
         \begin{bmatrix}
             x_s\\
             x_p
         \end{bmatrix}
+        }_{x}
         +
+        \underbrace{
         \begin{bmatrix}
             \mathbf{B}_s & \mathbf{0} \\
             \mathbf{0} & \mathbf{B}_p
         \end{bmatrix}
+        }_{\mathbf{B}}
+        \underbrace{
         \begin{bmatrix}
             u_s\\
             u_p 
         \end{bmatrix}
+        }_{u}
         \\
         &+
+        \underbrace{
         \begin{bmatrix}
             \mathbf{0}\\
             \mathbf{P}_{vg}
         \end{bmatrix}
+        }_{\mathbf{P}_{vg}}
         v_g
         +
+        \underbrace{
         \begin{bmatrix}
             \mathbf{0}\\
             \mathbf{P}_{iL}
         \end{bmatrix}
+        }_{\mathbf{P}_{iL}}
         i_L
     \end{aligned}
 \end{align}
 where the matrices $\mathbf{M}_p = \begin{bmatrix}\mathbf{0} & \mathbf{I} & \mathbf{0}\end{bmatrix}$ and $\mathbf{M}_s = \begin{bmatrix}\mathbf{0} & \mathbf{I}\end{bmatrix}$ are used to select the appropriate states from the parallel and series converter state vectors respectively.
+
+The last can be expressed in a more compact form as:
+\begin{align}
+    \begin{aligned}
+        \dfrac{d\, x(t)}{dt} &= \mathbf{A}x(t) + \mathbf{B}u(t) + \mathbf{P}_{vg}v_g(t) + \mathbf{P}_{iL}i_L(t)\\
+        y(t) &= \mathbf{C}\,x(t)
+    \end{aligned}
+\end{align}
+with the states $x(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$, input $u(t) = \begin{bmatrix} v_s^{\alpha\beta} & v_p^{\alpha\beta} \end{bmatrix}^T$, and output \linebreak $y(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$.
+
+The HDT system is discretized using a zero-order hold with a sampling time of $T_s = 5\,\mu s$. The discrete-time state-space model is given by:
+\begin{align}
+    \begin{aligned}
+        x[k+1] &= \mathbf{A}_d x[k] + \mathbf{B}_d u[k] + \mathbf{P}_{vg,d} v_g[k] + \mathbf{P}_{iL,d} i_L[k]\\
+        y[k] &= \mathbf{C} x[k]
+    \end{aligned}
+\end{align}
+where $\mathbf{A}_d = e^{\mathbf{A}T_s}$, $\mathbf{B}_d = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{B}$, $\mathbf{P}_{vg,d} = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}_{vg}$, $\mathbf{P}_{iL,d} = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}_{iL}$, and $\mathbf{C} = \mathbb{I}$.
+
+Since the HDT is designed to have a one-sampling period delay in the control loop, the discrete-time model can be expressed as:
+\begin{align}
+    \begin{aligned}
+        x[k+1] &=
+        \begin{bmatrix}
+            \mathbf{A}_d & \mathbf{B}_d \\
+            \mathbf{0} & \mathbf{0}
+        \end{bmatrix}
+        \begin{bmatrix}
+            x[k]\\
+            u[k-1]
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            \mathbf{0}\\
+            \mathbf{I}
+        \end{bmatrix}
+        u[k]
+    \end{aligned}
+\end{align}
