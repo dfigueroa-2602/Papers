@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  11 SEP 2025 09:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  11 SEP 2025 09:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -649,31 +649,31 @@ Package pdftex.def Info: Images/HDT_Diagram.pdf  used on input line 17.
 ]
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 146--148
+Underfull \hbox (badness 1910) in paragraph at lines 147--149
 \OT1/ptm/m/n/10 with the states $\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\OT1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--148
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 \OT1/ptm/m/n/10 in-put $\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\OT1/ptm/m/n/10 , and out-put
  []
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 155--157
+Underfull \hbox (badness 2269) in paragraph at lines 156--158
 \OT1/ptm/m/n/10 where $\OT1/cmr/bx/n/10 A[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 e[]$\OT1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 B[] \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 e[]d^^\\OT1/cmr/bx/n/10 B$\OT1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 P[] \OT1/cmr/m/n/10 =
  []
 
-) (Content/Control.tex
 
-[2 <./Images/HDT_Diagram.pdf>])
+
+[2 <./Images/HDT_Diagram.pdf>]) (Content/Control.tex)
 
 (Content/SimResults.tex
-<Images/Sim1.pdf, id=115, 511.9125pt x 341.275pt>
+<Images/Sim1.pdf, id=114, 511.9125pt x 341.275pt>
 File: Images/Sim1.pdf Graphic file (type pdf)
 <use Images/Sim1.pdf>
 Package pdftex.def Info: Images/Sim1.pdf  used on input line 3.
 (pdftex.def)             Requested size: 516.0pt x 344.02367pt.
-<Images/Sim2.pdf, id=116, 511.9125pt x 341.275pt>
+<Images/Sim2.pdf, id=115, 511.9125pt x 341.275pt>
 File: Images/Sim2.pdf Graphic file (type pdf)
 <use Images/Sim2.pdf>
 Package pdftex.def Info: Images/Sim2.pdf  used on input line 10.
@@ -719,7 +719,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  89i,28n,90p,766b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Paper.pdf (6 pages, 3626117 bytes).
+Output written on Paper.pdf (6 pages, 3626734 bytes).
 PDF statistics:
  261 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)

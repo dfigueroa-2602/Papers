@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Paper"] 1757575497.18063 "Paper.aux" "Paper.bbl" "Paper" 1757575513.30176 0
+["bibtex Paper"] 1757575497.18063 "Paper.aux" "Paper.bbl" "Paper" 1757576160.53799 0
   "./bib.bib" 1756885570 1102526 7c5f203074ac23a4cd3e05fc74bce8a6 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "Paper.aux" 1757575512 3492 a15f7db48e65107d305d274269e53f02 "pdflatex"
+  "Paper.aux" 1757576159 3492 a15f7db48e65107d305d274269e53f02 "pdflatex"
   (generated)
   "Paper.bbl"
   "Paper.blg"
   (rewritten before read)
-["pdflatex"] 1757575511.87521 "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" "Paper.pdf" "Paper" 1757575513.30207 0
+["pdflatex"] 1757576159.21414 "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" "Paper.pdf" "Paper" 1757576160.53835 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1756989814 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747149064 13157157 dc7e5788aae9820ed782ce41242cd78f ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -236,16 +236,16 @@
   "Configuration.tex" 1757575093 166 f41990099e641881b59e42ea7240884c ""
   "Content/Control.tex" 1757426008 3800 40bb12742d8a21c60514119a77637e61 ""
   "Content/Introduction.tex" 1756885570 1015 7380b6d665d61bb47c154b39229882e4 ""
-  "Content/Model_HDT.tex" 1757575511 7334 8ae5c179b330d36b1f82d6867e563ba0 ""
+  "Content/Model_HDT.tex" 1757576158 7833 6353594850431c13df569ebdc962fbd2 ""
   "Content/SimResults.tex" 1757544827 2873 6d5251aebb17480cabbcc7b9c419d292 ""
   "IEEEtran.cls" 1756885570 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "Images/HDT_Diagram.pdf" 1756989739 23850 e415a7715f98a48497560bd6d1d014f0 ""
+  "Images/HDT_Diagram.pdf" 1757575987 24393 451b6ac7988f971d27b83fa853c090f0 ""
   "Images/Sim1.pdf" 1757543424 1831759 cf51a0856acf7a067efda0e01139d8f2 ""
   "Images/Sim2.pdf" 1757543344 1325136 30238a0c3ba14a019b4725168786cfd8 ""
   "Packages.tex" 1756885570 454 a98c61f9316e726a99338f4e356fb401 ""
-  "Paper.aux" 1757575512 3492 a15f7db48e65107d305d274269e53f02 "pdflatex"
+  "Paper.aux" 1757576159 3492 a15f7db48e65107d305d274269e53f02 "pdflatex"
   "Paper.bbl" 1757575497 1292 4514031690a737f674055fcd8d54a49f "bibtex Paper"
-  "Paper.out" 1757575512 2226 3dad94cd61c75e3c84a673765316a618 "pdflatex"
+  "Paper.out" 1757576159 2226 3dad94cd61c75e3c84a673765316a618 "pdflatex"
   "Paper.tex" 1757544827 1152 0885268637533aa69fdfe4f56fed931e ""
   "Title.tex" 1757575093 1395 149b546408b7a77155823ad7421e3e6c ""
   "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" 1757544827 1152 0885268637533aa69fdfe4f56fed931e ""

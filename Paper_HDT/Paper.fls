@@ -403,10 +403,10 @@ INPUT C:\Users\Dave\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.t
 INPUT C:\Users\Dave\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\Dave\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
 INPUT C:\Users\Dave\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm
+INPUT C:\Users\Dave\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT .\Content\Control.tex
 INPUT .\Content\Control.tex
 INPUT Content\Control.tex
-INPUT C:\Users\Dave\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT .\Content\SimResults.tex
 INPUT .\Content\SimResults.tex
 INPUT Content\SimResults.tex
