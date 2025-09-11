@@ -8,7 +8,7 @@ The series converter dynamics are given by:
         i_{fs}^{abc} &= C_{fs}\dfrac{d\,v_{cs}^{abc}}{dt} + i_g^{abc} \\
     \end{aligned}
 \end{align}
-where $v_s^{abc}$ is the series converter output voltage, $i_{fs}^{abc}$ is the series converter inductor current, $v_{cs}^{abc}$ is the series converter capacitor voltage, and $i_g^{abc}$ is the grid current after the coupling transformer. The parameters $R_{fs}$, $L_{fs}$, and $C_{fs}$ are the series converter filter resistance, inductance, and capacitance respectively.
+where $v_s^{abc}$ is the series converter output voltage, $i_{fs}^{abc}$ is the series converter inductor current, $v_{cs}^{abc}$ is the series converter output capacitor voltage, and $i_g^{abc}$ is the grid current after the coupling transformer. The parameters $R_{fs}$, $L_{fs}$, and $C_{fs}$ are the series converter filter resistance, inductance, and capacitance respectively.
 
 Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
 
@@ -36,6 +36,7 @@ The parallel converter dynamics are given by:
         i_{fp}^{abc} &= C_{fp}\dfrac{d\,v_{cp}^{abc}}{dt} - i_Y^{abc} + i_L^{abc}
     \end{aligned}
 \end{align}
+where $v_p^{abc}$ is the parallel converter output voltage, $i_{fp}^{abc}$ is the parallel converter inductor current, $v_{cp}^{abc}$ is the parallel converter output capacitor voltage, $i_Y^{abc}$ is the transformer $Y$ side current, and $i_L^{abc}$ is the load current. The parameters $R_{fp}$, $L_{fp}$, and $C_{fp}$ are the parallel converter filter resistance, inductance, and capacitance respectively.
 
 Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
 
@@ -48,7 +49,7 @@ Leaving the states on the left side, and converting to $\alpha\beta$ coordinates
 
 \subsection{Distribution Transformer}
 
-The transformer is connected in $\Delta-Y$ configuration, with the series converter connected to the delta side, and the parallel converter connected to the $Y$ side. The transformer equations are given by:
+The transformer is connected in $\Delta-Y$ configuration, with the series converter (through the coupling transformer) connected to the $\Delta$ side, and the parallel converter connected to the $Y$ side. The $Y$ side has its neutral point grounded. The transformer equations are given by:
 
 \begin{align}
     \begin{aligned}
