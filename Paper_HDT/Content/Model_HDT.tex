@@ -133,19 +133,13 @@ The overall HDT model can be expressed in state-space form as:
             \mathbf{P}_{iL}
         \end{bmatrix}
         }_{\mathbf{P}_{iL}}
-        i_L
+        i_L\\
+        \dfrac{d\,x}{dt} &= \mathbf{A}x + \mathbf{B}u + \mathbf{P}_{vg}v_g + \mathbf{P}_{iL}i_L \label{eq:HDT_State_Space}\\
     \end{aligned}
 \end{align}
 where the matrices $\mathbf{M}_p = \begin{bmatrix}\mathbf{0} & \mathbf{I} & \mathbf{0}\end{bmatrix}$ and $\mathbf{M}_s = \begin{bmatrix}\mathbf{0} & \mathbf{I}\end{bmatrix}$ are used to select the appropriate states from the parallel and series converter state vectors respectively.
 
-The last can be expressed in a more compact form as:
-\begin{align}
-    \begin{aligned}
-        \dfrac{d\, x(t)}{dt} &= \mathbf{A}x(t) + \mathbf{B}u(t) + \mathbf{P}_{vg}v_g(t) + \mathbf{P}_{iL}i_L(t)\\
-        y(t) &= \mathbf{C}\,x(t)
-    \end{aligned}
-\end{align}
-with the states $x(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$, input $u(t) = \begin{bmatrix} v_s^{\alpha\beta} & v_p^{\alpha\beta} \end{bmatrix}^T$, and output \linebreak $y(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$.
+The states of the expression \eqref{eq:HDT_State_Space} are given by $x(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$, input $u(t) = \begin{bmatrix} v_s^{\alpha\beta} & v_p^{\alpha\beta} \end{bmatrix}^T$, and output \linebreak $y(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$.
 
 The HDT system is discretized using a zero-order hold with a sampling time of $T_s = 5\,\mu s$. The discrete-time state-space model is given by:
 \begin{align}
