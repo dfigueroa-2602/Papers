@@ -21,11 +21,47 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{carrenoCirculatingActivePower2023}
-A.~Carreno, M.~Malinowski, and M.~A. Perez, ``Circulating {{Active Power Flow}}
-  and {{DC-Link Voltage Ripple}} in {{Hybrid Transformers}},'' in
-  \emph{{{IECON}} 2023- 49th {{Annual Conference}} of the {{IEEE Industrial
-  Electronics Society}}}.\hskip 1em plus 0.5em minus 0.4em\relax Singapore,
-  Singapore: IEEE, Oct. 2023, pp. 1--6.
+\bibitem{carrenoConfigurationsPowerTopologies2021}
+A.~Carreno, M.~Perez, C.~Baier, A.~Huang, S.~Rajendran, and M.~Malinowski,
+  ``Configurations, {{Power Topologies}} and {{Applications}} of {{Hybrid
+  Distribution Transformers}},'' \emph{Energies}, vol.~14, no.~5, p. 1215, Feb.
+  2021.
+
+\bibitem{costaFourlegMatrixConverter2022}
+P.~Costa, G.~Para{\'i}so, S.~F. Pinto, and J.~F. Silva, ``A four-leg matrix
+  converter based hybrid distribution transformer for smart and resilient
+  grids,'' \emph{Electric Power Systems Research}, vol. 203, p. 107650, Feb.
+  2022.
+
+\bibitem{xuThreePhaseHybridTransformer2023}
+X.~Xu, Z.~Qiu, T.~Zhang, and H.~Gao, ``A {{Three-Phase Hybrid Transformer
+  Topology}} and {{Its Control Strategy}} for {{Active Distribution
+  Networks}},'' in \emph{2023 {{IEEE}} 7th {{Conference}} on {{Energy
+  Internet}} and {{Energy System Integration}} ({{EI2}})}, Dec. 2023, pp.
+  643--649.
+
+\bibitem{matelskiBadaniaEksperymentalneTransformatora2023}
+W.~Matelski, ``{Badania eksperymentalne transformatora hybrydowego jako
+  kondycjonera napi{\k e}cia w sieciach typu TN},'' \emph{PRZEGL{\k A}D
+  ELEKTROTECHNICZNY}, vol.~1, no.~5, pp. 233--238, May 2023.
+
+\bibitem{liuCompoundControlSystem2020}
+Y.~Liu, D.~Liang, P.~Kou, M.~Zhang, S.~Cai, K.~Zhou, Y.~Liang, Q.~Chen, and
+  C.~Yang, ``Compound {{Control System}} of {{Hybrid Distribution
+  Transformer}},'' \emph{IEEE Transactions on Industry Applications}, vol.~56,
+  no.~6, pp. 6360--6373, Nov. 2020.
+
+\bibitem{liuQuasiProportionalResonantControlHybrid2022}
+Y.~Liu, L.~Zhang, D.~Liang, H.~Jin, S.~Li, S.~Jia, J.~Li, H.~Liu, Y.~Wang,
+  K.~Zhou, Y.~Gao, S.~Cai, D.~Li, and S.~Feng, ``Quasi-{{Proportional-Resonant
+  Control}} for the {{Hybrid Distribution Transformer With LCL-Type
+  Converters}},'' \emph{IEEE Transactions on Industry Applications}, vol.~58,
+  no.~5, pp. 6368--6385, Sep. 2022.
+
+\bibitem{carrenoStateFeedbackControlHybrid2024}
+A.~Carreno, M.~A. Perez, and M.~Malinowski, ``State-{{Feedback Control}} of a
+  {{Hybrid Distribution Transformer}} for {{Power Quality Improvement}} of a
+  {{Distribution Grid}},'' \emph{IEEE Transactions on Industrial Electronics},
+  vol.~71, no.~2, pp. 1147--1157, Feb. 2024.
 
 \end{thebibliography}
