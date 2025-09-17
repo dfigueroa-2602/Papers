@@ -1,4 +1,22 @@
-Withe the state-space model of the HDT defined, the next step is to design a control strategy that ensures the desired performance. The proposed control strategy is based on a state feedback controller with integral action and resonant states to achieve zero steady-state error for sinusoidal references and disturbances. The block diagram of the proposed control strategy is shown in Fig. \ref{fig:Control_Diagram}.
+With the state-space model of the HDT defined, the next step is to design a control strategy that ensures the desired performance. 
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\columnwidth]{Images/Control_Diagram.pdf} 
+    \caption{Block diagram of the proposed control strategy for the HDT.}
+    \label{fig:Control_Diagram}
+\end{figure}
+
+\begin{figure*}[t!]
+    \centering
+    \includegraphics[width = \textwidth]{Images/w6_w8_iterations.pdf}
+    \caption{Convergence of exponents over the PSO iterations. (a) Exponent $q_6$ associated with the parallel converter inductor current $v_{cp,\alpha\beta}$. (b) Exponent $q_8$ associated with the first resonant state of the error $e1v_{cs,\alpha\beta}$.}
+    \label{fig:PSO_Convergence}
+\end{figure*}
+
+\subsection{Proposed Control Strategy}
+
+The proposed control strategy is based on a state feedback controller with integral action and resonant states to achieve zero steady-state error for sinusoidal references and disturbances. The block diagram of the proposed control strategy is shown in Fig. \ref{fig:Control_Diagram}.
 
 \begin{equation}
     u_k = -\mathbf{K}_x \mathbf{H}_a
@@ -8,13 +26,6 @@ Withe the state-space model of the HDT defined, the next step is to design a con
     \end{bmatrix} + \mathbf{K}_{err}e_k - \mathbf{K}_r \rho_k + \mathbf{K}_u m_k
 \end{equation}
 where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{H}_a$ is the matrix that selects the states without reference, $\mathbf{K}_{err}$ is the error gain matrix, $e_k$ is the error vector, $\mathbf{K}_r$ is the resonant states gain matrix, $\rho_k$ is the resonant states vector, $\mathbf{K}_u$ is the previous control input gain matrix, and $u_{k - 1}$ is the previous control input vector.
-
-\begin{figure}[t!]
-    \centering
-    \includegraphics[width=\columnwidth]{Images/Control_Diagram.pdf} 
-    \caption{Block diagram of the proposed control strategy for the HDT.}
-    \label{fig:Control_Diagram}
-\end{figure}
 
 The resonant states are included to ensure zero steady-state error for sinusoidal references and disturbances. The resonant states dynamics are given by:
 \begin{equation}
@@ -36,8 +47,8 @@ The resonant states are included to ensure zero steady-state error for sinusoida
 \end{equation}
 where $\omega$ is the nominal angular frequency, $\xi$ is the damping factor. Each of the references signals has two resonant states associated with it, meaning that for the HDT control, there are eight resonant states in total (4 for the $ev_{cs,\alpha\beta}$ and 4 for the $i_{fp,\alpha\beta}$). This can be expressed as:
 \begin{align}
-    \dfrac{d\,\rho(t)}{dt} &= \text{blkdiag}(\mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r)\rho(t)\\
-    &+ \text{blkdiag}(\mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r)e(t)
+    \dfrac{d\,\rho(t)}{dt} &= \text{diag}(\mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r)\rho(t)\\
+    &+ \text{diag}(\mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r)e(t)
 \end{align}
 
 These resonant states are then discretized using a ZOH giving the matrices $\mathbf{A}_{rd}$ and $\mathbf{B}_{rd}$. The augmented state-space model of the resonant states can be expressed as:
@@ -98,3 +109,54 @@ where $v_j(i)$ is the velocity of particle $j$ at iteration $i$, $x_j(i)$ is the
 where $\phi = c_1 + c_2 > 4$ is a constant that ensures convergence.
 
 The PSO algorithm iteratively updates the positions and velocities of the particles until a stopping criterion is met, such as a maximum number of iterations or a satisfactory solution. The best position found by the swarm is considered the optimal solution to the optimization problem.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/Fitness_iterations.pdf}
+    \caption{Convergence of the fitness value over the PSO iterations.}
+    \label{fig:PSO_Fitness}
+\end{figure}
+
+\subsection{PSO Performance Index}
+
+The performance index used for the PSO optimization is a cost function that considers both the transient and steady-state performance of the HDT. The cost function is defined as:
+\begin{equation}
+    J = \dfrac{1}{N} \sum_{i=1}^{N} |e_k|^2 + \beta \Delta u_k^2
+\end{equation}
+where $N$ is the number of samples in the simulation, $e_k$ is the error vector at sample $k$, $\Delta u_k$ is the change in control input at sample $k$, and $\beta$ is a weighting factor that balances the importance of the transient and steady-state performance.
+
+\begin{table}[h!]
+    \centering
+    \caption{PSO parameters used for the optimization of the control gains.}
+    \label{tab:PSO_Parameters}
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Parameter} & \textbf{Value}\\
+        \hline\hline
+        Number of particles & 100\\
+        Maximum number of iterations & 70\\
+        Absorbing walls boundaries & $[-12, 12]$\\
+        Cognitive acceleration coefficient ($c_1$) & 2.05\\
+        Social acceleration coefficient ($c_2$) & 2.05\\
+        Maximum weight exponent for states ($q_{max}$) & 4.5\\
+        Damping ratio for resonant states ($\xi$) & 0.01\\
+        \hline
+    \end{tabular}
+\end{table}
+
+After running the PSO algorithm, each of the state weights exponents ($q_i$) are given by:
+\begin{align}
+    \begin{aligned}
+        q_1 &= -0.7009 & q_2 &= -3.2101 & q_3 &= -2.9568\\
+        q_4 &= 3.4510 & q_5 &= -3.3684 & q_6 &= 2.9170\\
+        q_7 &= -5.9347 & q_8 &= 11.4511 & q_9&= 11.4543\\
+        q_{10} &= 5.7987 & q_{11} &= 0.5847
+    \end{aligned}
+\end{align}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{Images/Simulation_Results.pdf}
+    \caption{Simulation results for the proposed control strategy under grid and load disturbances. (a) Grid voltage $v_g^{abc}$, (b) Load current $i_L^{abc}$, (c) Series converter capacitor voltage $v_{cs}^{abc}$, (d) Parallel converter filter current $i_{fp}^{abc}$, (e) Transformer secondary side current $i_Y^{abc}$ and (f) dc-link voltage $V_{DC}$.}
+    \label{fig:Sim_results}
+\end{figure*}

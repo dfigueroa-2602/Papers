@@ -1,3 +1,4 @@
+% !TEX root = Paper.tex
 \subsection{Series Converter}
 
 The series converter dynamics are given by:
@@ -46,15 +47,15 @@ The transformer is connected in $\Delta-Y$ configuration, with the series conver
 
 \begin{align}
     \begin{aligned}
-        v_{Ya} &= N_{LFT}(v_{\Delta a} - v_{\Delta b}) \\
-        v_{Yb} &= N_{LFT}(v_{\Delta b} - v_{\Delta c}) \\
-        v_{Yc} &= N_{LFT}(v_{\Delta c} - v_{\Delta a})
+        v_{Ya} &= N_{DT}(v_{\Delta a} - v_{\Delta b}) \\
+        v_{Yb} &= N_{DT}(v_{\Delta b} - v_{\Delta c}) \\
+        v_{Yc} &= N_{DT}(v_{\Delta c} - v_{\Delta a})
     \end{aligned}
 \end{align}
 This can be expressed in matrix form as:
 \begin{align}
     \begin{aligned}
-        v_Y^{abc} &= N_{LFT}
+        v_Y^{abc} &= N_{DT}
         \underbrace{
         \begin{bmatrix}
             1 & -1 & 0 \\
@@ -63,14 +64,14 @@ This can be expressed in matrix form as:
         \end{bmatrix}
         }_{K_T'}
         v_{\Delta}^{abc}\\
-        v_Y^{abc} &= N_{LFT} K_T' v_{\Delta}^{abc} \label{eq:Delta_Y_Transformation}
+        v_Y^{abc} &= N_{DT} K_T' v_{\Delta}^{abc} \label{eq:Delta_Y_Transformation}
     \end{aligned}
 \end{align}
 In the other hand, the dynamics of the transformer are modeled as a series impedance referred to the $Y$ side. These transformer equations are given by:
 \begin{align}
     v_{Y}^{abc} &= R_Yi_Y^{abc} + L_Y\dfrac{d\,i_Y^{abc}}{dt} + v_{cp}^{abc} \\
     \intertext{Assuming that there is no zero-sequence current, and using the expression given in \eqref{eq:Delta_Y_Transformation}, the transformer model can be expressed in $\alpha\beta$ coordinates as:}
-    \dfrac{d\,i_Y^{\alpha\beta}}{dt} &= -\dfrac{R_Y}{L_Y}i_Y^{\alpha\beta} - \dfrac{1}{L_Y}v_{cp}^{\alpha\beta} + \dfrac{1}{L_Y}N_{LFT}K_T'v_{\Delta}^{\alpha\beta}
+    \dfrac{d\,i_Y^{\alpha\beta}}{dt} &= -\dfrac{R_Y}{L_Y}i_Y^{\alpha\beta} - \dfrac{1}{L_Y}v_{cp}^{\alpha\beta} + \dfrac{1}{L_Y}N_{DT}K_T'v_{\Delta}^{\alpha\beta}
 \end{align}
 
 \subsection{Overall HDT Model}

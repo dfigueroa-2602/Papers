@@ -1,25 +1,6 @@
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{Images/Sim1.pdf}
-    \caption{Simulation results for the proposed control strategy under grid and load disturbances.}
-    \label{fig:sim1}
-\end{figure*}
+% !TEX root = Paper.tex
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{Images/Sim2.pdf}
-    \caption{Simulation results for the proposed control strategy under grid and load disturbances.}
-    \label{fig:sim2}
-\end{figure*}
-
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{Images/Fig3_ex.pdf}
-    \caption{Simulation results for the proposed control strategy under grid and load disturbances.}
-    \label{fig:sim3}
-\end{figure*}
-
-In this section, the simulation results of the proposed control strategy are presented. The simulations are performed using MATLAB/Simulink, and the system parameters are listed in Table \ref{tab:params}. The proposed control strategy is tested under various grid and load disturbances, including grid voltage unbalanced swell, load impact, and unbalanced load.
+In this section, the simulation results of the proposed control strategy are presented. The simulations are performed using MATLAB/Simulink, and the system parameters are listed in Table \ref{tab:params}. The proposed control strategy is tested under grid unbalanced swell, load impact, load unbalance, and non-linear load conditions.
 
 \begin{table}[h!]
     \centering
@@ -30,17 +11,19 @@ In this section, the simulation results of the proposed control strategy are pre
         \hline
         \hline
         Grid Voltage & $V_{g}$ & 10 kV \\
+        Nominal Converter Voltage & $V_s$ & 400 V \\
+        DC Link Voltage & $V_{DC}$ & 700 V \\
         Grid Frequency & $f_e$ & 50 Hz \\
-        Transformers Power Rating & $S$ & 1 kVA \\
-        DC Link Voltage & $V_{DC}$ & 400 V \\
-        Series Converter Filter Inductance & $L_{fs}$ & 2 mH \\
-        Series Converter Filter Capacitance & $C_{fs}$ & 20 µF \\
-        Parallel Converter Filter Inductance & $L_{fp}$ & 2 mH \\
-        Parallel Converter Filter Capacitance & $C_{fp}$ & 20 µF \\
-        Transformer Dispersion Inductance & $L_Y$ & 0.1 mH \\
-        Transformer Series Resistance & $R_Y$ & $50\ \Omega$\\
+        Series Converter Filter Inductance & $L_{fs}$ & 200 mH \\
+        Series Converter Filter Resistance & $R_{fs}$ & $100 m\Omega$ \\
+        Series Converter Filter Capacitance & $C_{fs}$ & 12 µF \\
+        Parallel Converter Filter Inductance & $L_{fp}$ & 200 mH \\
+        Parallel Converter Filter Resistance & $R_{fp}$ & $100 m\Omega$ \\
+        Parallel Converter Filter Capacitance & $C_{fp}$ & 12 µF \\
+        Transformer Dispersion Inductance & $L_Y$ & 100 µH \\
+        Transformer Series Resistance & $R_Y$ & $5\ m\Omega$\\
         Coupling Transformer Turns Ratio & $N_{ct}$ & $2.5$ \\
-        Distribution Transformer Turns Ratio & $N_{DT}$ & $a$ \\
+        Distribution Transformer Turns Ratio & $N_{DT}$ & $V_s/(V_g\sqrt{3})$ \\
         Converters Switching Frequency & $f_{\text{sw}}$ & 20 kHz \\
         Control Sampling Time & $T_s$ & 5 µs \\
         \hline
@@ -48,16 +31,20 @@ In this section, the simulation results of the proposed control strategy are pre
     \label{tab:params}
 \end{table}
 
+Each of the load impacts are comprised by $47\ \Omega$ resistive load per phase, $2\ k\Omega$ resistive load in phase $a$ for the unbalanced load, and a three-phase diode bridge rectifier with a $47\ \Omega$ resistive load at its output for the non-linear load. The simulation results are shown in \Cref{fig:Sim_results}, where (a) shows the grid voltage $v_g^{abc}$, (b) shows the load current $i_L^{abc}$, (c) shows the parallel converter capacitor voltage $v_{cp}^{abc}$, and (d) shows the transformer secondary side current $i_Y^{abc}$.
 
 \subsection{Grid Voltage Unbalanced Swell Compensation}
 
-The simulation results for the proposed control strategy under grid voltage unbalanced swell are shown in Fig. \ref{fig:sim1}. The grid voltage swell occurs at $t=0.02\ s$ and lasts for $0.08\ s$. The proposed control strategy effectively compensates for the voltage swell, maintaining a balanced load current. 
-%\subsection{Grid Voltage Harmonics Compensation}
+In the instant $t=10\ ms$ until the instant $t = 260\ ms$ as it can be seen in the \Cref{fig:Sim_results}.(a). The proposed control strategy effectively compensates for the unbalanced swell, meaning that the parallel inverter injects the necessary voltage to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(d) for the transformer secondary side current and in \Cref{fig:Sim_results}.(c) for the parallel inverter voltage. 
 
 \subsection{Load Impact and Unbalanced Load Compensation}
 
-In the other hand, a load unbalance is applied at $t=0.1\ s$ and lasts for $0.06\ s$. Then, an unbalanced load is applied at $t=0.16\ s$ and lasts for $0.06\ s$. The proposed control strategy effectively compensates for the load unbalance, meaning that the parallel inverter injects the necessary current to maintain a balanced load current, as shown in Fig. \ref{fig:sim2}.
+At $t=60\ ms$, a three-phase balanced load impact is applied, and at $t=100\ ms$, a three-phase unbalanced load is applied, where the resistor of the phase $a$ is $2\ k\Omega$, as shown in \Cref{fig:Sim_results}.(b). To keep a balanced transformer secondary side current, the parallel converter injects the needed current, giving the desired performance, as shown in \Cref{fig:Sim_results}.(d)
 
-%\subsection{Non-linear Load Compensation}
+\subsection{Non-linear Load Compensation}
 
-%\subsection{Load Harmonics Compensation}
+Following the load impacts, at $t=140\ ms$, a non-linear load is applied, as it shown in the \Cref{fig:Sim_results}.(b), which consists of a three-phase diode bridge rectifier with a resistive load of $47\ \Omega$ at its output. The parallel converter compensates for the harmonics injected by the non-linear load, giving the secondary side currents that are shown in the \Cref{fig:Sim_results}.(d).
+
+\subsection{Grid Harmonics Compensation}
+
+Finally, at $t=200\ ms$, a third-order harmonic is added to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). The parallel converter compensates for the harmonic distortion, giving the series converter capacitor voltage shown in \Cref{fig:Sim_results}.(c).
