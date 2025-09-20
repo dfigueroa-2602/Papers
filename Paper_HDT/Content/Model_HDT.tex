@@ -12,17 +12,10 @@ where $v_s^{abc}$ is the series converter output voltage, $i_{fs}^{abc}$ is the 
 
 Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=0.9\textwidth]{Images/HDT_Diagram.pdf} 
-    \caption{Hybrid distribution transformer circuit diagram.}
-    \label{fig:HDT_Transformer}
-\end{figure*}
-
 \begin{align}
     \begin{aligned}
-        \dfrac{d\,i_{fs}^{\alpha\beta}}{dt} &= -\dfrac{R_{fs}}{L_{fs}}i_{fs}{\alpha\beta} - \dfrac{1}{L_{fs}}v_{cs}{\alpha\beta} + \dfrac{1}{L_{fs}}v_s{\alpha\beta} \\
-        \dfrac{d\,v_{cs}{\alpha\beta}}{dt} &= -\dfrac{1}{C_{fs}}i_{fs}{\alpha\beta} + \dfrac{1}{C_{fs}}i_g{\alpha\beta}
+        \dfrac{d\,i_{fs}^{\alpha\beta}}{dt} &= -\dfrac{R_{fs}}{L_{fs}}i_{fs}^{\alpha\beta} - \dfrac{1}{L_{fs}}v_{cs}^{\alpha\beta} + \dfrac{1}{L_{fs}}v_s^{\alpha\beta} \\
+        \dfrac{d\,v_{cs}^{\alpha\beta}}{dt} &= -\dfrac{1}{C_{fs}}i_{fs}^{\alpha\beta} + \dfrac{1}{C_{fs}}i_g^{\alpha\beta}
     \end{aligned}
 \end{align}
 
@@ -85,12 +78,10 @@ The overall HDT model can be expressed in state-space form as:
 \begin{align}
     \begin{aligned}
         \dfrac{d}{dt}
-        \underbrace{
         \begin{bmatrix}
             x_s\\
             x_p
         \end{bmatrix}
-        }_{x}
         &=
         \underbrace{
         \begin{bmatrix}
@@ -150,23 +141,35 @@ The HDT system is discretized using a zero-order hold with a sampling time of $T
 \end{align}
 where $\mathbf{A}_d = e^{\mathbf{A}T_s}$, $\mathbf{B}_d = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{B}$, $\mathbf{P}_{vg,d} = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}_{vg}$, $\mathbf{P}_{iL,d} = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}_{iL}$, and $\mathbf{C} = \mathbb{I}$.
 
-Since the HDT is designed to have a one-sampling period delay in the control loop, the discrete-time model can be expressed as:
+In most of the applications, there is a delay of one sampling period between the calculation of the control input and its application to the system. To account for this delay, the discrete-time state-space model is augmented with a new state representing the previous control input:
+\begin{equation}
+    m_k = u_{k - 1}
+\end{equation}
+This can be expressed in state-space form as:
 \begin{align}
     \begin{aligned}
-        x[k+1] &=
+        \begin{bmatrix}
+            x_{k + 1}\\
+            m_{k + 1}
+        \end{bmatrix}
+        &=
+        \underbrace{
         \begin{bmatrix}
             \mathbf{A}_d & \mathbf{B}_d \\
             \mathbf{0} & \mathbf{0}
         \end{bmatrix}
+        }_{\mathbf{A}_{d,\text{delay}}}
         \begin{bmatrix}
-            x[k]\\
-            u[k-1]
+            x_k\\
+            m_k
         \end{bmatrix}
         +
+        \underbrace{
         \begin{bmatrix}
             \mathbf{0}\\
             \mathbf{I}
         \end{bmatrix}
-        u[k]
+        }_{\mathbf{B}_{d,\text{delay}}}
+        u_k
     \end{aligned}
 \end{align}

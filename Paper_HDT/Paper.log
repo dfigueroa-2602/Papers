@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.7)  14 SEP 2025 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  15 SEP 2025 12:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -109,7 +109,12 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 116.
+ (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip52
 
@@ -633,57 +638,54 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (Content/Introduction.tex) (Content/Model_HDT.tex
+) (Content/Introduction.tex
 
-<Images/HDT_Diagram.pdf, id=59, 365.365pt x 108.405pt>
+<Images/HDT_Diagram.pdf, id=58, 365.365pt x 108.405pt>
 File: Images/HDT_Diagram.pdf Graphic file (type pdf)
 <use Images/HDT_Diagram.pdf>
-Package pdftex.def Info: Images/HDT_Diagram.pdf  used on input line 17.
+Package pdftex.def Info: Images/HDT_Diagram.pdf  used on input line 8.
 (pdftex.def)             Requested size: 464.39685pt x 137.79521pt.
 
 
 [1{C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
-]
+]) (Content/Model_HDT.tex
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-[]\OT1/ptm/m/n/10 The states of the ex-pres-sion [] are given
+
+[2 <./Images/HDT_Diagram.pdf>]
+Underfull \hbox (badness 1910) in paragraph at lines 138--140
+\T1/ptm/m/n/10 with the states $\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\T1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-\OT1/ptm/m/n/10 by $\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\OT1/ptm/m/n/10 ,
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
+\T1/ptm/m/n/10 in-put $\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\T1/ptm/m/n/10 , and out-put
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-\OT1/ptm/m/n/10 in-put $\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\OT1/ptm/m/n/10 , and out-put
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 150--152
-\OT1/ptm/m/n/10 where $\OT1/cmr/bx/n/10 A[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 e[]$\OT1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 B[] \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 e[]d^^\\OT1/cmr/bx/n/10 B$\OT1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 P[] \OT1/cmr/m/n/10 =
+Underfull \hbox (badness 2269) in paragraph at lines 147--149
+\T1/ptm/m/n/10 where $\OT1/cmr/bx/n/10 A[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 e[]$\T1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 B[] \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 e[]d^^\\OT1/cmr/bx/n/10 B$\T1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 P[] \OT1/cmr/m/n/10 =
  []
 
 
 
-[2 <./Images/HDT_Diagram.pdf>]) (Content/Control.tex
-<Images/Control_Diagram.pdf, id=114, 392.46625pt x 187.70125pt>
+) (Content/Control.tex
+<Images/Control_Diagram.pdf, id=113, 363.3575pt x 187.70125pt>
 File: Images/Control_Diagram.pdf Graphic file (type pdf)
 <use Images/Control_Diagram.pdf>
-Package pdftex.def Info: Images/Control_Diagram.pdf  used on input line 9.
-(pdftex.def)             Requested size: 252.0pt x 120.52362pt.
+Package pdftex.def Info: Images/Control_Diagram.pdf  used on input line 14.
+(pdftex.def)             Requested size: 252.0pt x 130.18134pt.
 
 
-) (Content/SimResults.tex
-<Images/Sim1.pdf, id=115, 511.9125pt x 341.275pt>
+[3 <./Images/Control_Diagram.pdf>]) (Content/SimResults.tex
+<Images/Sim1.pdf, id=154, 511.9125pt x 341.275pt>
 File: Images/Sim1.pdf Graphic file (type pdf)
 <use Images/Sim1.pdf>
 Package pdftex.def Info: Images/Sim1.pdf  used on input line 3.
 (pdftex.def)             Requested size: 516.0pt x 344.02367pt.
-<Images/Sim2.pdf, id=116, 511.9125pt x 341.275pt>
+<Images/Sim2.pdf, id=155, 511.9125pt x 341.275pt>
 File: Images/Sim2.pdf Graphic file (type pdf)
 <use Images/Sim2.pdf>
 Package pdftex.def Info: Images/Sim2.pdf  used on input line 10.
@@ -693,13 +695,13 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 30
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-[3 <./Images/Control_Diagram.pdf>])
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[4
+)
 
- <./Images/Sim1.pdf>] [5 <./Images/Sim2.pdf>] (Paper.bbl)
+[4] [5 <./Images/Sim1.pdf>] [6 <./Images/Sim2.pdf>] (Paper.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -715,8 +717,7 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-[6
-
+[7
 
 
 ] (Paper.aux)
@@ -728,17 +729,17 @@ Package rerunfilecheck Info: File `Paper.out' has not changed.
 (rerunfilecheck)             Checksum: 3DAD94CD61C75E3C84A673765316A618;2226.
  ) 
 Here is how much of TeX's memory you used:
- 33027 strings out of 469923
- 777994 string characters out of 5469655
- 1301087 words of memory out of 5000000
- 59291 multiletter control sequences out of 15000+600000
- 674941 words of font info for 137 fonts, out of 8000000 for 9000
+ 33290 strings out of 469941
+ 781071 string characters out of 5469914
+ 1305133 words of memory out of 5000000
+ 59516 multiletter control sequences out of 15000+600000
+ 754871 words of font info for 178 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,28n,90p,766b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,28n,90p,995b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Paper.pdf (6 pages, 3755737 bytes).
+Output written on Paper.pdf (7 pages, 3769121 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 500000)
+ 303 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
