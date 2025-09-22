@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Paper"] 1758549984.71713 "Paper.aux" "Paper.bbl" "Paper" 1758549986.2364 0
+["bibtex Paper"] 1758557046.95685 "Paper.aux" "Paper.bbl" "Paper" 1758557048.45647 0
   "./bib.bib" 1756885570 1102526 7c5f203074ac23a4cd3e05fc74bce8a6 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "Paper.aux" 1758549985 6689 379cf6d551ce241b834645fcb98b3bc3 "pdflatex"
+  "Paper.aux" 1758557047 7347 2245e22c9fc3aff5dbe4e419917dcc63 "pdflatex"
   (generated)
   "Paper.bbl"
   "Paper.blg"
   (rewritten before read)
-["pdflatex"] 1758549984.94888 "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" "Paper.pdf" "Paper" 1758549986.23674 0
+["pdflatex"] 1758557047.1801 "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" "Paper.pdf" "Paper" 1758557048.45683 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1756989814 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747149064 13157157 dc7e5788aae9820ed782ce41242cd78f ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -49,6 +49,7 @@
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
+  "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb" 1247596667 32034 bef395850903374c2ca83678bcfd98d0 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb" 1247596667 32007 e8fa0078355f39467039935974716569 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
@@ -246,7 +247,7 @@
   "Content/Conclusions.tex" 1758031096 1002 d036da63f8b325aaaf4ef7b0308063b5 ""
   "Content/Control.tex" 1758547096 9233 18ecf8c04d11b6339eb0eef896e8be58 ""
   "Content/Introduction.tex" 1758549983 4502 28e0f075aa01b8202fb803874c917c74 ""
-  "Content/Model_HDT.tex" 1758036321 8073 13f696fc4df1f96370281c9ba893a1dc ""
+  "Content/Model_HDT.tex" 1758557045 8662 668ec2a9ebb1eda517cb632f7e0514c3 ""
   "Content/SimResults.tex" 1758544756 3699 6ec000f55052370c758be9dfec31594e ""
   "IEEEtran.cls" 1756885570 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "Images/Control_Diagram.pdf" 1758548908 23928 fab7c4aed9446ee5ee481361bbcc8ebb ""
@@ -255,9 +256,9 @@
   "Images/Simulation_Results.pdf" 1758544619 411541 c2f2463e857acfbc63a9834191742a57 ""
   "Images/w6_w8_iterations.pdf" 1758545785 115547 eb54ef0802fa2139c9386215fec011ce ""
   "Packages.tex" 1757933713 480 be23fc0573be8b7d3e698e1f2cb8ea52 ""
-  "Paper.aux" 1758549985 6689 379cf6d551ce241b834645fcb98b3bc3 "pdflatex"
-  "Paper.bbl" 1758549984 3138 955c46e4a182d82644cfb89bf0983ec4 "bibtex Paper"
-  "Paper.out" 1758549985 2987 8138ff82a3b89e8880dd7dad30a0fbb5 "pdflatex"
+  "Paper.aux" 1758557047 7347 2245e22c9fc3aff5dbe4e419917dcc63 "pdflatex"
+  "Paper.bbl" 1758557047 3138 955c46e4a182d82644cfb89bf0983ec4 "bibtex Paper"
+  "Paper.out" 1758557047 2987 8138ff82a3b89e8880dd7dad30a0fbb5 "pdflatex"
   "Paper.tex" 1758031125 1966 357b497986f7c6f922438455f6120ebc ""
   "Title.tex" 1758103039 1187 7882fec1a911fc5eccd498bf5a060987 ""
   "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" 1758031125 1966 357b497986f7c6f922438455f6120ebc ""

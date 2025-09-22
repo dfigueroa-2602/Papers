@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  22 SEP 2025 16:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  22 SEP 2025 18:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -653,33 +653,26 @@ Package pdftex.def Info: Images/HDT_Diagram.pdf  used on input line 8.
 
 
 ] (Content/Model_HDT.tex
+Underfull \vbox (badness 1540) has occurred while \output is active []
+
+
 
 
 
 [2 <./Images/HDT_Diagram.pdf>]
-Underfull \hbox (badness 1910) in paragraph at lines 139--141
-\T1/ptm/m/n/10 with the states $\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\T1/ptm/m/n/10 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
-\T1/ptm/m/n/10 in-put $\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [][]$\T1/ptm/m/n/10 , and out-put
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 148--150
+Underfull \hbox (badness 2269) in paragraph at lines 179--181
 \T1/ptm/m/n/10 where $\OT1/cmr/bx/n/10 A[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 e[]$\T1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 B[] \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 e[]d^^\\OT1/cmr/bx/n/10 B$\T1/ptm/m/n/10 , $\OT1/cmr/bx/n/10 P[] \OT1/cmr/m/n/10 =
  []
 
 
 
 ) (Content/Control.tex
-<Images/Control_Diagram.pdf, id=131, 271.0125pt x 146.5475pt>
+<Images/Control_Diagram.pdf, id=141, 271.0125pt x 146.5475pt>
 File: Images/Control_Diagram.pdf Graphic file (type pdf)
 <use Images/Control_Diagram.pdf>
 Package pdftex.def Info: Images/Control_Diagram.pdf  used on input line 5.
 (pdftex.def)             Requested size: 252.0pt x 136.27208pt.
-<Images/w6_w8_iterations.pdf, id=132, 761.84625pt x 147.55125pt>
+<Images/w6_w8_iterations.pdf, id=142, 761.84625pt x 147.55125pt>
 File: Images/w6_w8_iterations.pdf Graphic file (type pdf)
 <use Images/w6_w8_iterations.pdf>
 Package pdftex.def Info: Images/w6_w8_iterations.pdf  used on input line 12.
@@ -692,15 +685,18 @@ LaTeX Warning: Reference `eq:Aug_Model' on page 1 undefined on input line 19.
 
 [3 <./Images/Control_Diagram.pdf>]
 
-<Images/Fitness_iterations.pdf, id=172, 233.87375pt x 85.31876pt>
+<Images/Fitness_iterations.pdf, id=176, 233.87375pt x 85.31876pt>
 File: Images/Fitness_iterations.pdf Graphic file (type pdf)
 <use Images/Fitness_iterations.pdf>
 Package pdftex.def Info: Images/Fitness_iterations.pdf  used on input line 118.
 (pdftex.def)             Requested size: 233.87315pt x 85.31853pt.
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 
 [4 <./Images/w6_w8_iterations.pdf> <./Images/Fitness_iterations.pdf>]
-<Images/Simulation_Results.pdf, id=214, 520.94624pt x 336.25626pt>
+<Images/Simulation_Results.pdf, id=218, 520.94624pt x 336.25626pt>
 File: Images/Simulation_Results.pdf Graphic file (type pdf)
 <use Images/Simulation_Results.pdf>
 Package pdftex.def Info: Images/Simulation_Results.pdf  used on input line 168.
@@ -744,17 +740,17 @@ Package rerunfilecheck Info: File `Paper.out' has not changed.
 (rerunfilecheck)             Checksum: 8138FF82A3B89E8880DD7DAD30A0FBB5;2987.
  ) 
 Here is how much of TeX's memory you used:
- 33323 strings out of 469941
- 782054 string characters out of 5469914
- 1303133 words of memory out of 5000000
- 59536 multiletter control sequences out of 15000+600000
+ 33330 strings out of 469941
+ 782295 string characters out of 5469914
+ 1300133 words of memory out of 5000000
+ 59544 multiletter control sequences out of 15000+600000
  756007 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,28n,90p,995b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Paper.pdf (6 pages, 1198148 bytes).
+<C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Paper.pdf (6 pages, 1210653 bytes).
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
+ 356 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
  174 words of extra memory for PDF output out of 10000 (max. 10000000)
 

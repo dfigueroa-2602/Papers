@@ -1,81 +1,119 @@
 % !TEX root = Paper.tex
 \subsection{Series Converter}
 
-The series converter dynamics are given by:
+The series converter dynamics are given by the following state-space equations:
 
-\begin{align}
-    \begin{aligned}
-        v_s^{abc} &= R_{fs}i_{fs}^{abc} + L_{fs}\dfrac{d\,i_{fs}^{abc}}{dt} + v_{cs}^{abc} \\
-        i_{fs}^{abc} &= C_{fs}\dfrac{d\,v_{cs}^{abc}}{dt} + i_g^{abc} \\
-    \end{aligned}
-\end{align}
-where $v_s^{abc}$ is the series converter output voltage, $i_{fs}^{abc}$ is the series converter inductor current, $v_{cs}^{abc}$ is the series converter output capacitor voltage, and $i_g^{abc}$ is the grid current after the coupling transformer. The parameters $R_{fs}$, $L_{fs}$, and $C_{fs}$ are the series converter filter resistance, inductance, and capacitance respectively.
-
-Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
-
-\begin{align}
-    \begin{aligned}
-        \dfrac{d\,i_{fs}^{\alpha\beta}}{dt} &= -\dfrac{R_{fs}}{L_{fs}}i_{fs}^{\alpha\beta} - \dfrac{1}{L_{fs}}v_{cs}^{\alpha\beta} + \dfrac{1}{L_{fs}}v_s^{\alpha\beta} \\
-        \dfrac{d\,v_{cs}^{\alpha\beta}}{dt} &= -\dfrac{1}{C_{fs}}i_{fs}^{\alpha\beta} + \dfrac{1}{C_{fs}}i_g^{\alpha\beta}
-    \end{aligned}
-\end{align}
+\begin{equation}
+    \dot{x}_s =
+    \underbrace{
+    \begin{bmatrix}
+        -\frac{R_{fs}}{L_{fs}} & -\frac{1}{L_{fs}} \\
+        \frac{1}{C_{fs}} & 0
+    \end{bmatrix}
+    }_{\mathbf{A}_s}
+    x_s +
+    \underbrace{
+    \begin{bmatrix}
+        \frac{1}{L_{fs}}\\
+        0
+    \end{bmatrix}
+    }_{\mathbf{B}_s}
+    u_s +
+    \underbrace{
+    \begin{bmatrix}
+        0 \\
+        \frac{1}{C_{fs}}
+    \end{bmatrix}
+    }_{\mathbf{P}_{ig}}
+    i_g^{\alpha\beta} \label{eq:SeriesConverter_Dynamics}
+\end{equation}
+where $x_s = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} \end{bmatrix}^T$ is the state vector, $u_s = v_s^{\alpha\beta}$ is the control input, and $i_g^{\alpha\beta}$ is the grid current. The parameters $R_{fs}$, $L_{fs}$, and $C_{fs}$ are the series converter filter resistance, inductance, and capacitance respectively.
 
 \subsection{Parallel Converter}
 
-The parallel converter dynamics are given by:
+In the same way, the parallel converter dynamics are given by the following state-space equations:
 
 \begin{align}
     \begin{aligned}
-        v_p^{abc} &= R_{fp}i_{fp}^{abc} + L_{fp}\dfrac{d\,i_{fp}^{abc}}{dt} + v_{cp}^{abc} \\
-        i_{fp}^{abc} &= C_{fp}\dfrac{d\,v_{cp}^{abc}}{dt} - i_Y^{abc} + i_L^{abc}
+        \dot{x}_p &=
+        \underbrace{
+        \begin{bmatrix}
+            -\frac{R_{fp}}{L_{fp}} & -\frac{1}{L_{fp}}\\
+            \frac{1}{C_{fp}} & 0
+        \end{bmatrix}
+        }_{\mathbf{A}_p}
+        x_p +
+        \underbrace{
+        \begin{bmatrix}
+            \frac{1}{L_{fp}}\\
+            0
+        \end{bmatrix}
+        }_{\mathbf{B}_p}
+        u_p\\
+        &+
+        \underbrace{
+        \begin{bmatrix}
+            0\\
+            -\frac{1}{C_{fp}}
+        \end{bmatrix}
+        }_{\mathbf{P}_{iY}}
+        i_Y^{\alpha\beta}
+        +
+        \underbrace{
+        \begin{bmatrix}
+            0\\
+            -\frac{1}{C_{fp}}
+        \end{bmatrix}
+        }_{\mathbf{P}_{iL}}
+        i_L^{\alpha\beta} \label{eq:ParallelConverter_Dynamics}
     \end{aligned}
 \end{align}
-where $v_p^{abc}$ is the parallel converter output voltage, $i_{fp}^{abc}$ is the parallel converter inductor current, $v_{cp}^{abc}$ is the parallel converter output capacitor voltage, $i_Y^{abc}$ is the transformer $Y$ side current, and $i_L^{abc}$ is the load current. The parameters $R_{fp}$, $L_{fp}$, and $C_{fp}$ are the parallel converter filter resistance, inductance, and capacitance respectively.
-
-Leaving the states on the left side, and converting to $\alpha\beta$ coordinates, the series converter model is given by:
-
-\begin{align}
-    \begin{aligned}
-        \dfrac{d\,i_{fp}^{\alpha\beta}}{dt} &= -\dfrac{R_{fp}}{L_{fp}}i_{fp}^{\alpha\beta} - \dfrac{1}{L_{fp}}v_{cp}^{\alpha\beta} + \dfrac{1}{L_{fp}}v_p^{\alpha\beta} \\
-        \dfrac{d\,v_{cp}^{\alpha\beta}}{dt} &= \dfrac{1}{C_{fp}}i_{fp}^{\alpha\beta} - \dfrac{1}{C_{fp}}i_Y^{\alpha\beta} + \dfrac{1}{C_{fp}}i_L^{\alpha\beta}
-    \end{aligned}
-\end{align}
+where $x_p = \begin{bmatrix} i_{fp}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$, $u_p = v_p^{\alpha\beta}$, $i_Y^{\alpha\beta}$ is the transformer secondary side current, and $i_L^{\alpha\beta}$ is the load current. The parameters $R_{fp}$, $L_{fp}$, and $C_{fp}$ are the parallel converter filter resistance, inductance, and capacitance respectively.
 
 \subsection{Distribution Transformer}
 
-The transformer is connected in $\Delta-Y$ configuration, with the series converter (through the coupling transformer) connected to the $\Delta$ side, and the parallel converter connected to the $Y$ side. The $Y$ side has its neutral point grounded. The transformer equations are given by:
-
+The transformer is connected in $\Delta-Y$ configuration, with the series converter (through the coupling transformer) connected to the $\Delta$ side, and the parallel converter connected to the $Y$ side. The $Y$ side has its neutral point grounded. The transformer equations, in a matricial form, are given by:
 \begin{align}
     \begin{aligned}
-        v_{Ya} &= N_{DT}(v_{\Delta a} - v_{\Delta b}) \\
-        v_{Yb} &= N_{DT}(v_{\Delta b} - v_{\Delta c}) \\
-        v_{Yc} &= N_{DT}(v_{\Delta c} - v_{\Delta a})
-    \end{aligned}
-\end{align}
-This can be expressed in matrix form as:
-\begin{align}
-    \begin{aligned}
-        v_Y^{abc} &= N_{DT}
+        v_Y^{abc} &= \dfrac{1}{N_{DT}}
         \underbrace{
         \begin{bmatrix}
             1 & -1 & 0 \\
             0 & 1 & -1 \\
             -1 & 0 & 1
         \end{bmatrix}
-        }_{K_T'}
+        }_{\mathbf{K_T}'}
         v_{\Delta}^{abc}\\
-        v_Y^{abc} &= N_{DT} K_T' v_{\Delta}^{abc} \label{eq:Delta_Y_Transformation}
+        v_Y^{abc} &= \frac{1}{N_{DT}} \mathbf{K_T}'\, v_{\Delta}^{abc} \label{eq:Delta_Y_Transformation}
     \end{aligned}
 \end{align}
-In the other hand, the dynamics of the transformer are modeled as a series impedance referred to the $Y$ side. These transformer equations are given by:
+where $N_{DT}$ is the transformer turns ratio, $v_Y^{abc}$ is the transformer $Y$ side voltage, and $v_{\Delta}^{abc}$ is the transformer $\Delta$ side voltage. Converting \cref{eq:Delta_Y_Transformation} to $\alpha\beta$ coordinates using the Clarke transformation gives:
+\begin{equation}
+    v_Y^{\alpha\beta} = \dfrac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}'\, v_{\Delta}^{\alpha\beta}
+\end{equation}
+where the matrix that models the $\Delta-Y$ transformer is given by:
+\begin{equation}
+    \mathbf{K_{T\alpha\beta}}' = \begin{bmatrix} \frac{2}{3} & -\frac{\sqrt{3}}{2}\\ \frac{\sqrt{3}}{2} & -\frac{3}{2} \end{bmatrix}
+\end{equation}
+The dynamics of the transformer are modeled as a series impedance referred to the $Y$ side and its state-space equation is given by:
+\begin{equation}
+    \dfrac{d\,i_Y^{\alpha\beta}}{d\,t} = -\dfrac{R_Y}{L_Y}i_Y^{\alpha\beta} - \dfrac{1}{L_Y}v_{cp}^{\alpha\beta} + \dfrac{1}{L_Y}N_{DT}\mathbf{K_{T\alpha\beta}}'\, v_{\Delta}^{\alpha\beta} \label{eq:Transformer_Dynamics}
+\end{equation}
+where $R_Y$ and $L_Y$ are the transformer series resistance and leakage inductance respectively. Since the $\Delta$ side voltage is the sum of the grid voltage and the series converter filter capacitor voltage, it can be expressed as:
+\begin{equation}
+    v_{\Delta}^{\alpha\beta} = N_{CT}v_{cs}^{\alpha\beta} + v_g^{\alpha\beta}
+\end{equation}
+where $N_{CT}$ is the coupling transformer turns ratio. Substituting this into \cref{eq:Transformer_Dynamics} gives:
 \begin{align}
-    v_{Y}^{abc} &= R_Yi_Y^{abc} + L_Y\dfrac{d\,i_Y^{abc}}{dt} + v_{cp}^{abc} \\
-    \intertext{Assuming that there is no zero-sequence current, and using the expression given in \eqref{eq:Delta_Y_Transformation}, the transformer model can be expressed in $\alpha\beta$ coordinates as:}
-    \dfrac{d\,i_Y^{\alpha\beta}}{dt} &= -\dfrac{R_Y}{L_Y}i_Y^{\alpha\beta} - \dfrac{1}{L_Y}v_{cp}^{\alpha\beta} + \dfrac{1}{L_Y}N_{DT}K_T'v_{\Delta}^{\alpha\beta}
+    \begin{aligned}
+        \dfrac{d\,i_Y^{\alpha\beta}}{d\,t} &= -\dfrac{R_Y}{L_Y}i_Y^{\alpha\beta} - \dfrac{1}{L_Y}v_{cp}^{\alpha\beta}\\
+        &+ \dfrac{1}{L_Y}N_{DT}\mathbf{K_{T\alpha\beta}}'\left(N_{CT}v_{cs}^{\alpha\beta} + v_g^{\alpha\beta}\right) \label{eq:Transformer_Dynamics_Final}
+    \end{aligned}
 \end{align}
 
 \subsection{Overall HDT Model}
-The overall HDT model can be expressed in state-space form as:
+The overall HDT model is obtained by combining the series converter, parallel converter, and transformer state-space equations given in \eqref{eq:SeriesConverter_Dynamics}, \eqref{eq:ParallelConverter_Dynamics}, and \eqref{eq:Transformer_Dynamics_Final} respectively. The combined state-space equations are given by:
+
 \begin{align}
     \begin{aligned}
         \dfrac{d}{dt}
@@ -86,7 +124,7 @@ The overall HDT model can be expressed in state-space form as:
         &=
         \underbrace{
         \begin{bmatrix}
-            \mathbf{A}_s & \mathbf{P}_{ig}\mathbf{M}_p \\
+            \mathbf{A}_s & \mathbf{P}_{iY}\mathbf{M}_p \\
             \mathbf{P}_{vc}\mathbf{M}_s & \mathbf{A}_p
         \end{bmatrix}
         }_{\mathbf{A}}
@@ -125,19 +163,12 @@ The overall HDT model can be expressed in state-space form as:
             \mathbf{P}_{iL}
         \end{bmatrix}
         }_{\mathbf{P}_{iL}}
-        i_L
-    \end{aligned}
-\end{align}
-where the matrices $\mathbf{M}_p = \begin{bmatrix}\mathbf{0} & \mathbf{I} & \mathbf{0}\end{bmatrix}$ and $\mathbf{M}_s = \begin{bmatrix}\mathbf{0} & \mathbf{I}\end{bmatrix}$ are used to select the appropriate states from the parallel and series converter state vectors respectively.
-
-The last can be expressed in a more compact form as:
-\begin{align}
-    \begin{aligned}
+        i_L\\
         \dfrac{d\, x(t)}{dt} &= \mathbf{A}x(t) + \mathbf{B}u(t) + \mathbf{P}_{vg}v_g(t) + \mathbf{P}_{iL}i_L(t)\\
         y(t) &= \mathbf{C}\,x(t)
     \end{aligned}
 \end{align}
-with the states $x(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$, input $u(t) = \begin{bmatrix} v_s^{\alpha\beta} & v_p^{\alpha\beta} \end{bmatrix}^T$, and output \linebreak $y(t) = \begin{bmatrix} i_{fs}^{\alpha\beta} & v_{cs}^{\alpha\beta} & i_{fp}^{\alpha\beta} & i_{Y}^{\alpha\beta} & v_{cp}^{\alpha\beta} \end{bmatrix}^T$.
+where the matrices $\mathbf{M}_p = \begin{bmatrix}\mathbf{0} & \mathbf{I} & \mathbf{0}\end{bmatrix}$ and $\mathbf{M}_s = \begin{bmatrix}\mathbf{0} & \mathbf{I}\end{bmatrix}$ are used to select the appropriate states from the parallel and series converter state vectors respectively.
 
 The HDT system is discretized using a zero-order hold with a sampling time of $T_s = 5\,\mu s$. The discrete-time state-space model is given by:
 \begin{align}
