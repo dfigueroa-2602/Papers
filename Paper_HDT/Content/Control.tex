@@ -16,9 +16,9 @@ With the state-space model of the HDT defined, the next step is to design a cont
 
 \subsection{Proposed Control Strategy}
 
-The proposed control strategy is based on a state feedback controller which is designed using the augmented state-space model of the HDT, defined in the \Cref{eq:Aug_Model}. The control strategy aims to achieve zero steady-state error for sinusoidal references. The state feedback controller is designed using the discrete LQR approach given by:
+The proposed control strategy is based on a state feedback controller which is designed using the augmented state-space model of the HDT, defined in \eqref{eq:AugmentedModel}. The control strategy aims to achieve zero steady-state error for sinusoidal references. The state feedback controller is designed using the discrete LQR approach given by:
 \begin{equation}
-    \mathbf{K} = \text{dlqr}(\mathbf{A}_{d,delay}, \mathbf{B}_{d,\text{aug}}, \mathbf{Q}, \mathbf{R})
+    \mathbf{K} = \text{dlqr}(\mathbf{A}_{d,delay}, \mathbf{B}_{d,\text{delay}}, \mathbf{Q}, \mathbf{R})
 \end{equation}
 where $\mathbf{Q}\in\mathbb{R}^{11}$ and $\mathbf{R}\in\mathbb{R}^4 = \mathbf{I}$ are the state and input weighting matrices, respectively. The gain matrix is partitioned into three sub-matrices: $\mathbf{K}_x$, $\mathbf{K}_u$ and $\mathbf{K}_r$ for convenience. The block diagram of the proposed control strategy is shown in \Cref{fig:Control_Diagram}. With the partitioned gain matrices defined, the control input can be expressed as:
 \begin{equation}
@@ -30,7 +30,7 @@ where $\mathbf{Q}\in\mathbb{R}^{11}$ and $\mathbf{R}\in\mathbb{R}^4 = \mathbf{I}
 \end{equation}
 where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_u$ is the previous control input gain matrix and $\mathbf{K}_r$ is the resonant states gain matrix.
 
-As mentioned before, the proposed control strategy includes resonant states to ensure zero steady-state error for sinusoidal references. The resonant states are defined by the following differential equation:
+The resonant states are defined by the following state-space equation:
 \begin{equation}
     \dfrac{d\,\rho(t)}{dt} = 
     \underbrace{
@@ -74,7 +74,7 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
         \end{bmatrix}
         +
         \begin{bmatrix}
-            \mathbf{B}_{d,\text{aug}}\\
+            \mathbf{B}_{d,\text{delay}}\\
             \mathbf{0}
         \end{bmatrix}
         \begin{bmatrix}
@@ -111,14 +111,7 @@ where $v_j(i)$ is the velocity of particle $j$ at iteration $i$, $x_j(i)$ is the
 \end{equation}
 where $\phi = c_1 + c_2 > 4$ is a constant that ensures convergence.
 
-The PSO algorithm iteratively updates the positions and velocities of the particles until a stopping criterion is met, sin this case, the maximum of iteration number. The best position found by the swarm is considered the optimal solution to the optimization problem.
-
-\begin{figure}[t!]
-    \centering
-    \includegraphics[]{Images/Fitness_iterations.pdf}
-    \caption{Convergence of the fitness value over the PSO iterations.}
-    \label{fig:PSO_Fitness}
-\end{figure}
+The PSO algorithm iteratively updates the positions and velocities of the particles until the maximum of iteration number is reached. The best position found by the swarm is considered the optimal solution to the optimization problem.
 
 \subsection{PSO Performance Index}
 
@@ -134,7 +127,7 @@ The weights are defined as:
 \end{equation}
 where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent to be optimized. The weights are used to scale the states in the cost function, allowing the PSO algorithm to prioritize certain states over others. The optimization variables lie within the range $[-20,20]$ including the absorbing walls boundaries. The PSO parameters used for the optimization are listed in Table \ref{tab:PSO_Parameters}.
 
-\begin{table}[h!]
+\begin{table}[t!]
     \centering
     \caption{PSO parameters used for the optimization of the control gains.}
     \label{tab:PSO_Parameters}
@@ -153,17 +146,34 @@ where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent t
     \end{tabular}
 \end{table}
 
-After running the PSO algorithm, each of the state weights exponents ($q_i$) are given by:
-\begin{align}
-    \begin{aligned}
-        q_1 &= -0.7009 & q_2 &= -3.2101 & q_3 &= -2.9568\\
-        q_4 &= 3.4510 & q_5 &= -3.3684 & q_6 &= 2.9170\\
-        q_7 &= -5.9347 & q_8 &= 11.4511 & q_9&= 11.4543\\
-        q_{10} &= 5.7987 & q_{11} &= 0.5847
-    \end{aligned}
-\end{align}
+\begin{table}[h!]
+    \centering
+    \caption{Optimized state weight exponents $q_i$ from PSO.}
+    \label{tab:PSO_Weights}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        $q_1$ & $q_2$ & $q_3$ & $q_4$ & $q_5$ & $q_6$ & $q_7$\\
+        \hline
+        $-0.70$ & $-3.21$ & $-2.96$ & $3.45$ & $-3.37$ & $2.92$ & $-5.93$ \\
+        \hline
+        $q_8$ & $q_9$ & $q_{10}$ & $q_{11}$ &  &  & \\
+        \hline
+        $11.45$ & $11.45$ & $5.80$ & $0.58$ &  &  & \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\begin{figure*}
+After running the PSO algorithm, each of the state weights exponents ($q_i$) are given the \Cref{tab:PSO_Weights}. The convergence of two of the exponents over the PSO iterations is shown in \Cref{fig:PSO_Convergence}, while the convergence of the fitness value over the PSO iterations is shown in \Cref{fig:PSO_Fitness}.
+
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[]{Images/Fitness_iterations.pdf}
+    \caption{Convergence of the fitness value over the PSO iterations.}
+    \label{fig:PSO_Fitness}
+\end{figure}
+
+\begin{figure*}[t!]
     \centering
     \includegraphics[width=\textwidth]{Images/Simulation_Results.pdf}
     \caption{Simulation results for the proposed control strategy under grid and load disturbances. (a) Grid voltage $v_g^{abc}$, (b) Series converter capacitor voltage $v_{cs}^{abc}$, (c) Parallel converter capacitor voltage $v_{cp}^{abc}$, (d) Series converter inductor current $i_{cs}^{abc}$, (e) Secondary side transformer current $i_Y^{abc}$, (f) Parallel converter inductor current $i_{cp}^{abc}$}
