@@ -16,23 +16,26 @@ With the state-space model of the HDT defined, the next step is to design a cont
 
 \subsection{Proposed Control Strategy}
 
-The proposed control strategy is based on a state feedback controller with integral action and resonant states to achieve zero steady-state error for sinusoidal references and disturbances. The block diagram of the proposed control strategy is shown in Fig. \ref{fig:Control_Diagram}.
-
+The proposed control strategy is based on a state feedback controller which is designed using the augmented state-space model of the HDT, defined in the \Cref{eq:Aug_Model}. The control strategy aims to achieve zero steady-state error for sinusoidal references. The state feedback controller is designed using the discrete LQR approach given by:
 \begin{equation}
-    u_k = -\mathbf{K}_x \mathbf{H}_a
+    \mathbf{K} = \text{dlqr}(\mathbf{A}_{d,delay}, \mathbf{B}_{d,\text{aug}}, \mathbf{Q}, \mathbf{R})
+\end{equation}
+where $\mathbf{Q}\in\mathbb{R}^{11}$ and $\mathbf{R}\in\mathbb{R}^4 = \mathbf{I}$ are the state and input weighting matrices, respectively. The gain matrix is partitioned into three sub-matrices: $\mathbf{K}_x$, $\mathbf{K}_u$ and $\mathbf{K}_r$ for convenience. The block diagram of the proposed control strategy is shown in \Cref{fig:Control_Diagram}. With the partitioned gain matrices defined, the control input can be expressed as:
+\begin{equation}
+    u_k = -\mathbf{K}_x
     \begin{bmatrix}
         x_k\\
         m_k
-    \end{bmatrix} + \mathbf{K}_{err}e_k - \mathbf{K}_r \rho_k + \mathbf{K}_u m_k
+    \end{bmatrix} + \mathbf{K}_u m_k - \mathbf{K}_r \rho_k
 \end{equation}
-where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{H}_a$ is the matrix that selects the states without reference, $\mathbf{K}_{err}$ is the error gain matrix, $e_k$ is the error vector, $\mathbf{K}_r$ is the resonant states gain matrix, $\rho_k$ is the resonant states vector, $\mathbf{K}_u$ is the previous control input gain matrix, and $u_{k - 1}$ is the previous control input vector.
+where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_u$ is the previous control input gain matrix and $\mathbf{K}_r$ is the resonant states gain matrix.
 
-The resonant states are included to ensure zero steady-state error for sinusoidal references and disturbances. The resonant states dynamics are given by:
+As mentioned before, the proposed control strategy includes resonant states to ensure zero steady-state error for sinusoidal references. The resonant states are defined by the following differential equation:
 \begin{equation}
     \dfrac{d\,\rho(t)}{dt} = 
     \underbrace{
     \begin{bmatrix}
-        -2\xi\omega & \omega \\
+        0 & \omega \\
         -\omega & 0
     \end{bmatrix}
     }_{\mathbf{A}_r}
@@ -45,7 +48,7 @@ The resonant states are included to ensure zero steady-state error for sinusoida
     }_{\mathbf{B}_r}
     e(t)
 \end{equation}
-where $\omega$ is the nominal angular frequency, $\xi$ is the damping factor. Each of the references signals has two resonant states associated with it, meaning that for the HDT control, there are eight resonant states in total (4 for the $ev_{cs,\alpha\beta}$ and 4 for the $i_{fp,\alpha\beta}$). This can be expressed as:
+where $\omega$ is the nominal angular frequency and $e(t)$ is the error vector between the reference and the measured output. Each of the references signals has two resonant states associated with it, meaning that for the HDT control, there are eight resonant states in total (4 for the $ev_{cs,\alpha\beta}$ and 4 for the $i_{fp,\alpha\beta}$). This can be expressed as:
 \begin{align}
     \dfrac{d\,\rho(t)}{dt} &= \text{diag}(\mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r, \mathbf{A}_r)\rho(t)\\
     &+ \text{diag}(\mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r, \mathbf{B}_r)e(t)
@@ -94,7 +97,7 @@ where $\mathbf{H}_x$ selects the states from the HDT state vector that are impos
 
 \subsection{Particle Swarm Optimization}
 
-The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
+To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of exponents $q_l$, where $l\in\left[1,2,...,11\right]$. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
 \begin{align}
     \begin{aligned}
         v_j(i + 1) &= K_{ap}\left(v_j(i) + c_1 r_1 (pbest_j - x_j(i)) \right.\\
@@ -108,11 +111,11 @@ where $v_j(i)$ is the velocity of particle $j$ at iteration $i$, $x_j(i)$ is the
 \end{equation}
 where $\phi = c_1 + c_2 > 4$ is a constant that ensures convergence.
 
-The PSO algorithm iteratively updates the positions and velocities of the particles until a stopping criterion is met, such as a maximum number of iterations or a satisfactory solution. The best position found by the swarm is considered the optimal solution to the optimization problem.
+The PSO algorithm iteratively updates the positions and velocities of the particles until a stopping criterion is met, sin this case, the maximum of iteration number. The best position found by the swarm is considered the optimal solution to the optimization problem.
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width = \columnwidth]{Images/Fitness_iterations.pdf}
+    \includegraphics[]{Images/Fitness_iterations.pdf}
     \caption{Convergence of the fitness value over the PSO iterations.}
     \label{fig:PSO_Fitness}
 \end{figure}
@@ -124,6 +127,12 @@ The performance index used for the PSO optimization is a cost function that cons
     J = \dfrac{1}{N} \sum_{i=1}^{N} |e_k|^2 + \beta \Delta u_k^2
 \end{equation}
 where $N$ is the number of samples in the simulation, $e_k$ is the error vector at sample $k$, $\Delta u_k$ is the change in control input at sample $k$, and $\beta$ is a weighting factor that balances the importance of the transient and steady-state performance.
+
+The weights are defined as:
+\begin{equation}
+    w_i = 10^{q_i}
+\end{equation}
+where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent to be optimized. The weights are used to scale the states in the cost function, allowing the PSO algorithm to prioritize certain states over others. The optimization variables lie within the range $[-20,20]$ including the absorbing walls boundaries. The PSO parameters used for the optimization are listed in Table \ref{tab:PSO_Parameters}.
 
 \begin{table}[h!]
     \centering
@@ -157,6 +166,6 @@ After running the PSO algorithm, each of the state weights exponents ($q_i$) are
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{Images/Simulation_Results.pdf}
-    \caption{Simulation results for the proposed control strategy under grid and load disturbances. (a) Grid voltage $v_g^{abc}$, (b) Load current $i_L^{abc}$, (c) Series converter capacitor voltage $v_{cs}^{abc}$, (d) Parallel converter filter current $i_{fp}^{abc}$, (e) Transformer secondary side current $i_Y^{abc}$ and (f) dc-link voltage $V_{DC}$.}
+    \caption{Simulation results for the proposed control strategy under grid and load disturbances. (a) Grid voltage $v_g^{abc}$, (b) Series converter capacitor voltage $v_{cs}^{abc}$, (c) Parallel converter capacitor voltage $v_{cp}^{abc}$, (d) Series converter inductor current $i_{cs}^{abc}$, (e) Secondary side transformer current $i_Y^{abc}$, (f) Parallel converter inductor current $i_{cp}^{abc}$}
     \label{fig:Sim_results}
 \end{figure*}

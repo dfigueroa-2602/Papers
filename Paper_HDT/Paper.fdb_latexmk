@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Paper"] 1758108315.65081 "Paper.aux" "Paper.bbl" "Paper" 1758108317.34383 0
+["bibtex Paper"] 1758549984.71713 "Paper.aux" "Paper.bbl" "Paper" 1758549986.2364 0
   "./bib.bib" 1756885570 1102526 7c5f203074ac23a4cd3e05fc74bce8a6 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "Paper.aux" 1758108316 6590 3c546162ba3fe26dec294e254e471722 "pdflatex"
+  "Paper.aux" 1758549985 6689 379cf6d551ce241b834645fcb98b3bc3 "pdflatex"
   (generated)
   "Paper.bbl"
   "Paper.blg"
   (rewritten before read)
-["pdflatex"] 1758108315.98074 "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" "Paper.pdf" "Paper" 1758108317.34413 0
+["pdflatex"] 1758549984.94888 "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" "Paper.pdf" "Paper" 1758549986.23674 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1756989814 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747149064 13157157 dc7e5788aae9820ed782ce41242cd78f ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -244,20 +244,20 @@
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "Configuration.tex" 1758032294 354 7016d08bc9ee28f5f0741b6d5abb5381 ""
   "Content/Conclusions.tex" 1758031096 1002 d036da63f8b325aaaf4ef7b0308063b5 ""
-  "Content/Control.tex" 1758108295 7976 2d9a6206963d18be774988eccc37861b ""
-  "Content/Introduction.tex" 1758031763 4505 99cbbce7ef072c53ede960f38b6bf8e6 ""
+  "Content/Control.tex" 1758547096 9233 18ecf8c04d11b6339eb0eef896e8be58 ""
+  "Content/Introduction.tex" 1758549983 4502 28e0f075aa01b8202fb803874c917c74 ""
   "Content/Model_HDT.tex" 1758036321 8073 13f696fc4df1f96370281c9ba893a1dc ""
-  "Content/SimResults.tex" 1758108295 3918 70bce349dd18ebb4725c4c13feca12e8 ""
+  "Content/SimResults.tex" 1758544756 3699 6ec000f55052370c758be9dfec31594e ""
   "IEEEtran.cls" 1756885570 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "Images/Control_Diagram.pdf" 1757928606 24526 d8b1a258cfe59dcb5454556894e21ed8 ""
-  "Images/Fitness_iterations.pdf" 1758108044 18263 5a32578119d5be79c85965d41239613b ""
-  "Images/HDT_Diagram.pdf" 1758032198 24391 844e086f73b24a2d6ac558628cf8125f ""
-  "Images/Simulation_Results.pdf" 1758108313 1005740 416caf04f7b1274fc2a38479dc40e2b2 ""
-  "Images/w6_w8_iterations.pdf" 1758108043 119171 95efbb2701ebe366121151f8630be704 ""
+  "Images/Control_Diagram.pdf" 1758548908 23928 fab7c4aed9446ee5ee481361bbcc8ebb ""
+  "Images/Fitness_iterations.pdf" 1758545786 19545 8501b012f00d75a90fc9d362d5cd9b9e ""
+  "Images/HDT_Diagram.pdf" 1758549886 24766 8fc9e759e466118661753caf892020f1 ""
+  "Images/Simulation_Results.pdf" 1758544619 411541 c2f2463e857acfbc63a9834191742a57 ""
+  "Images/w6_w8_iterations.pdf" 1758545785 115547 eb54ef0802fa2139c9386215fec011ce ""
   "Packages.tex" 1757933713 480 be23fc0573be8b7d3e698e1f2cb8ea52 ""
-  "Paper.aux" 1758108316 6590 3c546162ba3fe26dec294e254e471722 "pdflatex"
-  "Paper.bbl" 1758108315 3138 955c46e4a182d82644cfb89bf0983ec4 "bibtex Paper"
-  "Paper.out" 1758108316 2987 8138ff82a3b89e8880dd7dad30a0fbb5 "pdflatex"
+  "Paper.aux" 1758549985 6689 379cf6d551ce241b834645fcb98b3bc3 "pdflatex"
+  "Paper.bbl" 1758549984 3138 955c46e4a182d82644cfb89bf0983ec4 "bibtex Paper"
+  "Paper.out" 1758549985 2987 8138ff82a3b89e8880dd7dad30a0fbb5 "pdflatex"
   "Paper.tex" 1758031125 1966 357b497986f7c6f922438455f6120ebc ""
   "Title.tex" 1758103039 1187 7882fec1a911fc5eccd498bf5a060987 ""
   "c:/Users/Dave/Documents/git/Papers/Paper_HDT/Paper.tex" 1758031125 1966 357b497986f7c6f922438455f6120ebc ""

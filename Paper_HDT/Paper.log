@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  17 SEP 2025 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  22 SEP 2025 16:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -640,11 +640,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (Content/Introduction.tex
-<Images/HDT_Diagram.pdf, id=74, 365.365pt x 108.405pt>
+<Images/HDT_Diagram.pdf, id=74, 331.2375pt x 106.3975pt>
 File: Images/HDT_Diagram.pdf Graphic file (type pdf)
 <use Images/HDT_Diagram.pdf>
 Package pdftex.def Info: Images/HDT_Diagram.pdf  used on input line 8.
-(pdftex.def)             Requested size: 464.39685pt x 137.79521pt.
+(pdftex.def)             Requested size: 516.0pt x 165.76999pt.
 
 
 )
@@ -674,42 +674,46 @@ Underfull \hbox (badness 2269) in paragraph at lines 148--150
 
 
 ) (Content/Control.tex
-<Images/Control_Diagram.pdf, id=136, 363.3575pt x 187.70125pt>
+<Images/Control_Diagram.pdf, id=131, 271.0125pt x 146.5475pt>
 File: Images/Control_Diagram.pdf Graphic file (type pdf)
 <use Images/Control_Diagram.pdf>
 Package pdftex.def Info: Images/Control_Diagram.pdf  used on input line 5.
-(pdftex.def)             Requested size: 252.0pt x 130.18134pt.
-<Images/w6_w8_iterations.pdf, id=137, 761.84625pt x 147.55125pt>
+(pdftex.def)             Requested size: 252.0pt x 136.27208pt.
+<Images/w6_w8_iterations.pdf, id=132, 761.84625pt x 147.55125pt>
 File: Images/w6_w8_iterations.pdf Graphic file (type pdf)
 <use Images/w6_w8_iterations.pdf>
 Package pdftex.def Info: Images/w6_w8_iterations.pdf  used on input line 12.
 (pdftex.def)             Requested size: 516.0pt x 99.9395pt.
 
 
+LaTeX Warning: Reference `eq:Aug_Model' on page 1 undefined on input line 19.
+
+
+
 [3 <./Images/Control_Diagram.pdf>]
-<Images/Fitness_iterations.pdf, id=174, 230.8625pt x 104.39pt>
+
+<Images/Fitness_iterations.pdf, id=172, 233.87375pt x 85.31876pt>
 File: Images/Fitness_iterations.pdf Graphic file (type pdf)
 <use Images/Fitness_iterations.pdf>
-Package pdftex.def Info: Images/Fitness_iterations.pdf  used on input line 115.
-(pdftex.def)             Requested size: 252.0pt x 113.94847pt.
+Package pdftex.def Info: Images/Fitness_iterations.pdf  used on input line 118.
+(pdftex.def)             Requested size: 233.87315pt x 85.31853pt.
 
-
-<Images/Simulation_Results.pdf, id=175, 517.935pt x 329.23pt>
-File: Images/Simulation_Results.pdf Graphic file (type pdf)
-<use Images/Simulation_Results.pdf>
-Package pdftex.def Info: Images/Simulation_Results.pdf  used on input line 159.
-(pdftex.def)             Requested size: 516.0pt x 328.03355pt.
-) (Content/SimResults.tex
 
 [4 <./Images/w6_w8_iterations.pdf> <./Images/Fitness_iterations.pdf>]
+<Images/Simulation_Results.pdf, id=214, 520.94624pt x 336.25626pt>
+File: Images/Simulation_Results.pdf Graphic file (type pdf)
+<use Images/Simulation_Results.pdf>
+Package pdftex.def Info: Images/Simulation_Results.pdf  used on input line 168.
+(pdftex.def)             Requested size: 516.0pt x 333.06404pt.
+) (Content/SimResults.tex
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 19.
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
+) (Content/Conclusions.tex) (Paper.bbl
 
-
-[5 <./Images/Simulation_Results.pdf>]) (Content/Conclusions.tex) (Paper.bbl)
+[5])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -727,26 +731,30 @@ Before submitting the final camera ready copy, remember to:
 
 [6
 
-] (Paper.aux)
+ <./Images/Simulation_Results.pdf>] (Paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-14>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Paper.out' has not changed.
 (rerunfilecheck)             Checksum: 8138FF82A3B89E8880DD7DAD30A0FBB5;2987.
  ) 
 Here is how much of TeX's memory you used:
- 33319 strings out of 469941
- 782007 string characters out of 5469914
- 1302133 words of memory out of 5000000
- 59535 multiletter control sequences out of 15000+600000
- 754900 words of font info for 178 fonts, out of 8000000 for 9000
+ 33323 strings out of 469941
+ 782054 string characters out of 5469914
+ 1303133 words of memory out of 5000000
+ 59536 multiletter control sequences out of 15000+600000
+ 756007 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,28n,90p,995b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Paper.pdf (6 pages, 1792277 bytes).
+Output written on Paper.pdf (6 pages, 1198148 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
  174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
