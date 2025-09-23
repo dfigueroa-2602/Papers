@@ -120,4 +120,15 @@ B.~Ufnalski, A.~Kaszewski, and L.~M. Grzesiak, ``Particle {{Swarm
   Transactions on Industrial Electronics}, vol.~62, no.~1, pp. 484--493, Jan.
   2015.
 
+\bibitem{clercSwarmQueenDeterministic1999}
+M.~Clerc, ``The swarm and the queen: Towards a deterministic and adaptive
+  particle swarm optimization,'' in \emph{Proceedings of the 1999 {{Congress}}
+  on {{Evolutionary Computation-CEC99}} ({{Cat}}. {{No}}. {{99TH8406}})},
+  vol.~3, Jul. 1999, pp. 1951--1957 Vol. 3.
+
+\bibitem{robinsonParticleSwarmOptimization2004}
+J.~Robinson and Y.~{Rahmat-Samii}, ``Particle swarm optimization in
+  electromagnetics,'' \emph{IEEE Transactions on Antennas and Propagation},
+  vol.~52, no.~2, pp. 397--407, Feb. 2004.
+
 \end{thebibliography}

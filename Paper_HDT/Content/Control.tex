@@ -23,10 +23,7 @@ The proposed control strategy is based on a state feedback controller which is d
 where $\mathbf{Q}\in\mathbb{R}^{11}$ and $\mathbf{R}\in\mathbb{R}^4 = \mathbf{I}$ are the state and input weighting matrices, respectively. The gain matrix is partitioned into three sub-matrices: $\mathbf{K}_x$, $\mathbf{K}_u$ and $\mathbf{K}_r$ for convenience. The block diagram of the proposed control strategy is shown in \Cref{fig:Control_Diagram}. With the partitioned gain matrices defined, the control input can be expressed as:
 \begin{equation}
     u_k = -\mathbf{K}_x
-    \begin{bmatrix}
-        x_k\\
-        m_k
-    \end{bmatrix} + \mathbf{K}_u m_k - \mathbf{K}_r \rho_k
+    x_k - \mathbf{K}_u u_k - \mathbf{K}_r \rho_k
 \end{equation}
 where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_u$ is the previous control input gain matrix and $\mathbf{K}_r$ is the resonant states gain matrix.
 
@@ -59,7 +56,7 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
     \begin{aligned}
         \begin{bmatrix}
             x_{k + 1}\\
-            m_{k + 1}\\
+            u_{k + 1}\\
             \rho_{k + 1}
         \end{bmatrix}
         &=
@@ -69,7 +66,7 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
         \end{bmatrix}
         \begin{bmatrix}
             x_k\\
-            m_k\\
+            u_k\\
             \rho_k
         \end{bmatrix}
         +
@@ -78,7 +75,7 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
             \mathbf{0}
         \end{bmatrix}
         \begin{bmatrix}
-            u_k\\
+            m_k\\
             e_k
         \end{bmatrix}
         \\
@@ -87,8 +84,8 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
             \mathbf{C} & \mathbf{0}
         \end{bmatrix}
         \begin{bmatrix}
-            x_K\\
-            m_k\\
+            x_k\\
+            u_k\\
             \rho_k
         \end{bmatrix}
     \end{aligned}
@@ -97,7 +94,7 @@ where $\mathbf{H}_x$ selects the states from the HDT state vector that are impos
 
 \subsection{Particle Swarm Optimization}
 
-To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of exponents $q_l$, where $l\in\left[1,2,...,11\right]$. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
+To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of exponents $q_l$, where $l\in\left[1,2,...,11\right]$. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
 \begin{align}
     \begin{aligned}
         v_j(i + 1) &= K_{ap}\left(v_j(i) + c_1 r_1 (pbest_j - x_j(i)) \right.\\
@@ -125,7 +122,7 @@ The weights are defined as:
 \begin{equation}
     w_i = 10^{q_i}
 \end{equation}
-where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent to be optimized. The weights are used to scale the states in the cost function, allowing the PSO algorithm to prioritize certain states over others. The optimization variables lie within the range $[-20,20]$ including the absorbing walls boundaries. The PSO parameters used for the optimization are listed in Table \ref{tab:PSO_Parameters}.
+where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent to be optimized. The weights are used to scale the states in the cost function, allowing the PSO algorithm to prioritize certain states over others. The optimization variables lie within the range $[-20,20]$ including the absorbing walls boundaries~\cite{robinsonParticleSwarmOptimization2004}. The PSO parameters used for the optimization are listed in Table \ref{tab:PSO_Parameters}.
 
 \begin{table}[t!]
     \centering
@@ -137,11 +134,9 @@ where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent t
         \hline\hline
         Number of particles & 100\\
         Maximum number of iterations & 70\\
+        Maximum weight exponent for states & $[-20, 20]$\\
         Absorbing walls boundaries & $[-12, 12]$\\
-        Cognitive acceleration coefficient ($c_1$) & 2.05\\
-        Social acceleration coefficient ($c_2$) & 2.05\\
-        Maximum weight exponent for states ($q_{max}$) & 4.5\\
-        Damping ratio for resonant states ($\xi$) & 0.01\\
+        Cognitive acceleration coefficients ($c_1$, $c_2$) & 2.05\\
         \hline
     \end{tabular}
 \end{table}
@@ -150,15 +145,15 @@ where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent t
     \centering
     \caption{Optimized state weight exponents $q_i$ from PSO.}
     \label{tab:PSO_Weights}
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        $q_1$ & $q_2$ & $q_3$ & $q_4$ & $q_5$ & $q_6$ & $q_7$\\
+        $q_1$ & $q_2$ & $q_3$ & $q_4$ & $q_5$ & $q_6$\\
         \hline
-        $-0.70$ & $-3.21$ & $-2.96$ & $3.45$ & $-3.37$ & $2.92$ & $-5.93$ \\
+        $-6.186$ & $-7.810$ & $-4.406$ & $-1.642$ & $-8.674$ & $-5.315$\\
         \hline
-        $q_8$ & $q_9$ & $q_{10}$ & $q_{11}$ &  &  & \\
+        $q_7$ & $q_8$ & $q_9$ & $q_{10}$ & $q_{11}$ &\\
         \hline
-        $11.45$ & $11.45$ & $5.80$ & $0.58$ &  &  & \\
+        $-11.118$ & $11.999$ & $9.672$ & $10.516$ & $8.827$ & \\
         \hline
     \end{tabular}
 \end{table}
@@ -176,6 +171,6 @@ After running the PSO algorithm, each of the state weights exponents ($q_i$) are
 \begin{figure*}[t!]
     \centering
     \includegraphics[width=\textwidth]{Images/Simulation_Results.pdf}
-    \caption{Simulation results for the proposed control strategy under grid and load disturbances. (a) Grid voltage $v_g^{abc}$, (b) Series converter capacitor voltage $v_{cs}^{abc}$, (c) Parallel converter capacitor voltage $v_{cp}^{abc}$, (d) Series converter inductor current $i_{cs}^{abc}$, (e) Secondary side transformer current $i_Y^{abc}$, (f) Parallel converter inductor current $i_{cp}^{abc}$}
+    \caption{Simulation results in $abc$ coordinates for the proposed control strategy under grid and load disturbances. (a) Grid voltage, (b) Series converter output voltage, (c) Parallel converter output voltage, (d) Secondary side transformer current, (e) Parallel converter current, (f) Load current}
     \label{fig:Sim_results}
 \end{figure*}
