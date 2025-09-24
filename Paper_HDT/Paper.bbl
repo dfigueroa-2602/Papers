@@ -87,13 +87,6 @@ P.~Costa, G.~Para{\'i}so, S.~F. Pinto, and J.~F. Silva, ``A four-leg matrix
   grids,'' \emph{Electric Power Systems Research}, vol. 203, p. 107650, Feb.
   2022.
 
-\bibitem{xuThreePhaseHybridTransformer2023}
-X.~Xu, Z.~Qiu, T.~Zhang, and H.~Gao, ``A {{Three-Phase Hybrid Transformer
-  Topology}} and {{Its Control Strategy}} for {{Active Distribution
-  Networks}},'' in \emph{2023 {{IEEE}} 7th {{Conference}} on {{Energy
-  Internet}} and {{Energy System Integration}} ({{EI2}})}, Dec. 2023, pp.
-  643--649.
-
 \bibitem{liuCompoundControlSystem2020}
 Y.~Liu, D.~Liang, P.~Kou, M.~Zhang, S.~Cai, K.~Zhou, Y.~Liang, Q.~Chen, and
   C.~Yang, ``Compound {{Control System}} of {{Hybrid Distribution
@@ -119,6 +112,19 @@ B.~Ufnalski, A.~Kaszewski, and L.~M. Grzesiak, ``Particle {{Swarm
   Voltage-Source Inverter With}} an {{LC Output Filter}},'' \emph{IEEE
   Transactions on Industrial Electronics}, vol.~62, no.~1, pp. 484--493, Jan.
   2015.
+
+\bibitem{galcckiParticleSwarmOptimization2018}
+A.~Galccki, M.~Michalczuk, B.~Ufnalski, and L.~M. Grzesiak, ``Particle {{Swarm
+  Optimization}} of the {{State Feedback Current Controller}} with
+  {{Oscillatory Terms}} for a {{Three-Phase Grid-Tie Converter}},'' in
+  \emph{2018 20th {{European Conference}} on {{Power Electronics}} and
+  {{Applications}} ({{EPE}}'18 {{ECCE Europe}})}, Sep. 2018, pp. P.1--P.10.
+
+\bibitem{akagiControlStrategyActive1986}
+H.~Akagi, A.~Nabae, and S.~Atoh, ``Control {{Strategy}} of {{Active Power
+  Filters Using Multiple Voltage-Source PWM Converters}},'' \emph{IEEE
+  Transactions on Industry Applications}, vol. IA-22, no.~3, pp. 460--465, May
+  1986.
 
 \bibitem{clercSwarmQueenDeterministic1999}
 M.~Clerc, ``The swarm and the queen: Towards a deterministic and adaptive

@@ -92,9 +92,11 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
 \end{align}
 where $\mathbf{H}_x$ selects the states from the HDT state vector that are imposed to follow references.
 
+The series converter reference is calculated as the difference between the nominal value of the grid voltage and the actual value and the parallel converter reference is the sum of the DC-link control loop, which uses the instantaneous power theory~\cite{akagiControlStrategyActive1986}, and the harmonic elimination control loop. This is based in the work from Carreno et al.~\cite{carrenoStateFeedbackControlHybrid2024}.
+
 \subsection{Particle Swarm Optimization}
 
-To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of exponents $q_l$, where $l\in\left[1,2,...,11\right]$. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
+To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of powers $q_{x,j}(i)$, where $x$, $j$ and $i$ are the state, particle and iteration numbers. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
 \begin{align}
     \begin{aligned}
         v_j(i + 1) &= K_{ap}\left(v_j(i) + c_1 r_1 (pbest_j - x_j(i)) \right.\\
@@ -102,7 +104,7 @@ To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjus
         x_j(i + 1) &= x_j(i) + v_j(i + 1)
     \end{aligned}
 \end{align}
-where $v_j(i)$ is the velocity of particle $j$ at iteration $i$, $x_j(i)$ is the position of particle $j$ at iteration $i$, $pbest_j$ is the best position found by particle $j$, $gbest$ is the best position found by the entire swarm, $c_1$ and $c_2$ are cognitive and social acceleration coefficients, $r_1$ and $r_2$ are random numbers uniformly distributed in the range [0, 1], and $K_{ap}$ is the constriction factor given by:
+where $v_j(i)$, $x_j(i)$, $pbest_j$ and $gbest$ are the velocity, position, the best position and global-best position of the particle $j$ at iteration $i$. $c_1$ and $c_2$ are cognitive and social acceleration coefficients, $r_1$ and $r_2$ are random numbers uniformly distributed in the range [0, 1], and $K_{ap}$ is the constriction factor given by:
 \begin{equation}
     K_{ap} = \dfrac{2}{\left|2 - \phi - \sqrt{\phi^2 - 4\phi}\right|}
 \end{equation}
@@ -112,17 +114,17 @@ The PSO algorithm iteratively updates the positions and velocities of the partic
 
 \subsection{PSO Performance Index}
 
-The performance index used for the PSO optimization is a cost function that considers both the transient and steady-state performance of the HDT. The cost function is defined as:
+The performance index used for the PSO optimization is a cost function that considers both the transient and steady-state performance of the HDT~\cite{ufnalskiParticleSwarmOptimization2015}. This index is minimized through many iterations considering the HDT system with step references and without any applied disturbances. The cost function is defined as:
 \begin{equation}
     J = \dfrac{1}{N} \sum_{i=1}^{N} |e_k|^2 + \beta \Delta u_k^2
 \end{equation}
-where $N$ is the number of samples in the simulation, $e_k$ is the error vector at sample $k$, $\Delta u_k$ is the change in control input at sample $k$, and $\beta$ is a weighting factor that balances the importance of the transient and steady-state performance.
+where $N$ is the number of samples in the simulation, $\Delta u_k$ is the change in control input at sample $k$, and $\beta$ is a weighting factor that balances the importance of the transient and steady-state performance.
 
-The weights are defined as:
+The assumptions that are made when running the PSO algorithm is that the penalties for the $\alpha$ and $\beta$ components are equal, including the resonant terms for each of the components. For that reason, the search of space is shrunk from the 22 states to the half. Also, to simplify the search space of the swarm, the particles are applied as powers of the state weights. This can be expressed as:
 \begin{equation}
-    w_i = 10^{q_i}
+    \mathbf{Q} = \text{diag}\left\{10^{q_1}\mathbf{I}, 10^{q_2}\mathbf{I}, ..., 10^{q_{11}}\mathbf{I}\right\}
 \end{equation}
-where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent to be optimized. The weights are used to scale the states in the cost function, allowing the PSO algorithm to prioritize certain states over others. The optimization variables lie within the range $[-20,20]$ including the absorbing walls boundaries~\cite{robinsonParticleSwarmOptimization2004}. The PSO parameters used for the optimization are listed in Table \ref{tab:PSO_Parameters}.
+The optimization variables lie within a define range including the absorbing walls boundaries~\cite{robinsonParticleSwarmOptimization2004} which allows obtaining a not-large LQR gain. The PSO parameters used for the optimization are listed in \Cref{tab:PSO_Parameters}.
 
 \begin{table}[t!]
     \centering
@@ -137,6 +139,7 @@ where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent t
         Maximum weight exponent for states & $[-20, 20]$\\
         Absorbing walls boundaries & $[-12, 12]$\\
         Cognitive acceleration coefficients ($c_1$, $c_2$) & 2.05\\
+        Performance index weighting factor ($\beta$) & $2\times10^{-7}$\\
         \hline
     \end{tabular}
 \end{table}
@@ -158,7 +161,7 @@ where $w_i$ is the weight associated with state $i$, and $q_i$ is the exponent t
     \end{tabular}
 \end{table}
 
-After running the PSO algorithm, each of the state weights exponents ($q_i$) are given the \Cref{tab:PSO_Weights}. The convergence of two of the exponents over the PSO iterations is shown in \Cref{fig:PSO_Convergence}, while the convergence of the fitness value over the PSO iterations is shown in \Cref{fig:PSO_Fitness}.
+After running the PSO algorithm, each of the state weights exponents ($q_x$) are given the \Cref{tab:PSO_Weights}. The convergence of two of the exponents over the PSO iterations is shown in \Cref{fig:PSO_Convergence}, while the convergence of the fitness value over the PSO iterations is shown in \Cref{fig:PSO_Fitness}.
 
 
 \begin{figure}[t!]
