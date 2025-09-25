@@ -22,15 +22,15 @@ The objectives of the series converter are to compensate for voltage disturbance
     x_s +
     \underbrace{
     \begin{bmatrix}
-        \frac{1}{L_{fs}}\\
-        0
+        \frac{1}{L_{fs}}\mathbf{I}\\
+        \mathbf{0}
     \end{bmatrix}
     }_{\mathbf{B}_s}
     v_s +
     \underbrace{
     \begin{bmatrix}
-        0 \\
-        \frac{1}{C_{fs}}
+        \mathbf{0} \\
+        -\frac{1}{C_{fs}}\mathbf{I}
     \end{bmatrix}
     }_{\mathbf{P}_{is}}
     i_s \label{eq:SeriesConverter_Dynamics}
@@ -68,119 +68,99 @@ Substituting this into \eqref{eq:SeriesConverter_Dynamics} gives:
 
 \subsection{Parallel Converter}
 
-In the other hand, the parallel converter is responsible for maintaining the dc-link voltage of the HDT and compensating load side disturbances, including harmonics and unbalances that can be present. The dynamics of the parallel converter are given by the following state-space equation:
-
+The parallel converter is responsible for maintaining the dc-link voltage of the HDT and compensating load-side disturbances, including harmonics and unbalances that may be present. Its dynamics are expressed as:
 \begin{align}
-    \begin{aligned}
-        \dot{x}_p &=
-        \underbrace{
-        \begin{bmatrix}
-            -\frac{R_{fp}}{L_{fp}} \mathbf{I} & -\frac{1}{L_{fp}} \mathbf{I}\\
-            \frac{1}{C_{fp}} \mathbf{I} & \mathbf{0}
-        \end{bmatrix}
-        }_{\mathbf{A}_p}
-        x_p +
-        \underbrace{
-        \begin{bmatrix}
-            \frac{1}{L_{fp}}\\
-            0
-        \end{bmatrix}
-        }_{\mathbf{B}_p}
-        v_p\\
-        &+
-        \underbrace{
-        \begin{bmatrix}
-            0\\
-            -\frac{1}{C_{fp}}
-        \end{bmatrix}
-        }_{\mathbf{P}_{iY}}
-        i_Y
+    \dot{x}_p &=
+        \underbrace{\begin{bmatrix}
+            -\tfrac{R_{fp}}{L_{fp}} \mathbf{I} & -\tfrac{1}{L_{fp}} \mathbf{I}\\[4pt]
+             \tfrac{1}{C_{fp}} \mathbf{I} & \mathbf{0}
+        \end{bmatrix}}_{\mathbf{A}_p}
+        x_p
         +
-        \underbrace{
-        \begin{bmatrix}
-            0\\
-            -\frac{1}{C_{fp}}
-        \end{bmatrix}
-        }_{\mathbf{P}_{iL}}
-        i_L \label{eq:ParallelConverter_Dynamics}
-    \end{aligned}
+        \underbrace{\begin{bmatrix}
+            \tfrac{1}{L_{fp}}\mathbf{I}\\[4pt]
+            \mathbf{0}
+        \end{bmatrix}}_{\mathbf{B}_p} v_p
+        +
+        \underbrace{\begin{bmatrix}
+            \mathbf{0}\\[4pt]
+            \tfrac{1}{C_{fp}}\mathbf{I}
+        \end{bmatrix}}_{\mathbf{P}_{iY}} i_Y
+        +
+        \underbrace{\begin{bmatrix}
+            \mathbf{0}\\[4pt]
+            -\tfrac{1}{C_{fp}}\mathbf{I}
+        \end{bmatrix}}_{\mathbf{P}_{iL}} i_L ,
+    \label{eq:ParallelConverter}
 \end{align}
-where $x_p = \begin{bmatrix} i_{fp} & v_{cp} \end{bmatrix}^T$ and $i_L$ is the load current. The parameters $R_{fp}$, $L_{fp}$, and $C_{fp}$ are the parallel converter filter resistance, inductance, and capacitance respectively.
+where $x_p = \begin{bmatrix} i_{fp} & v_{cp} \end{bmatrix}^T$ and $i_L$ is the load current. The parameters $R_{fp}$, $L_{fp}$, and $C_{fp}$ are the parallel converter filter resistance, inductance, and capacitance, respectively.
 
-The secondary side voltage of the transformer $v_2$ can be expressed in terms of the primary side voltage $v_1$, which is the sum of $v_g$ and $N_{CT} v_{cs}$, as:
+\subsection{Transformer Dynamics}
+
+The secondary voltage of the transformer $v_2$ can be expressed in terms of the primary voltage $v_1$, given by $v_g + N_{CT} v_{cs}$, as:
 \begin{equation}
-    v_2 = \dfrac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}'(N_{CT}v_{cs} + v_g)
+    v_2 = \frac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}' (N_{CT} v_{cs} + v_g),
 \end{equation}
-where $\mathbf{K_{T\alpha\beta}}'$ is the transpose of $\mathbf{K_{T\alpha\beta}}$. Hence, the dynamics of the transformer are modeled as a series impedance referred to the $Y$ side and its state-space equation is given by:
+where $\mathbf{K_{T\alpha\beta}}'$ is the transpose of the transformation matrix. The transformer dynamics, modeled as a series impedance referred to the $Y$ side, are:
 \begin{align}
-    \begin{aligned}
-        \dfrac{d\,i_Y}{d\,t} &= -\dfrac{R_Y}{L_Y}i_Y - \dfrac{1}{L_Y}v_{cp}\\
-        &+ \dfrac{1}{L_Y}\dfrac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}' (v_g + N_{CT}v_{cs}) \label{eq:Transformer_Dynamics}
-    \end{aligned}
+    \dot{i_Y} = -\frac{R_Y}{L_Y}i_Y - \frac{1}{L_Y} v_{cp}
+    + \frac{1}{L_Y}\frac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}'(v_g + N_{CT} v_{cs}),
+    \label{eq:Transformer}
 \end{align}
-where $R_Y$ and $L_Y$ are the transformer series resistance and leakage inductance respectively. The matrices $\mathbf{P}_{vg} = \dfrac{1}{L_Y}\dfrac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}'$ and $\mathbf{P}_{vc} = \dfrac{1}{L_Y}\dfrac{N_{CT}}{N_{DT}} \mathbf{K_{T\alpha\beta}}'$ are the grid voltage and series converter capacitor voltage disturbance input matrices respectively.
+with $R_Y$ and $L_Y$ being the transformer series resistance and leakage inductance, respectively. The coupling matrices are
+\[
+    \mathbf{P}_{vg} = \frac{1}{L_Y}\frac{1}{N_{DT}} \mathbf{K_{T\alpha\beta}}', \qquad
+    \mathbf{P}_{vc} = \frac{1}{L_Y}\frac{N_{CT}}{N_{DT}} \mathbf{K_{T\alpha\beta}}' .
+\]
 
 \subsection{Overall HDT Model}
 
-The overall HDT model is obtained by combining the series converter, parallel converter, and transformer state-space equations given in \eqref{eq:SeriesConverter_Dynamics}, \eqref{eq:ParallelConverter_Dynamics}, and \eqref{eq:Transformer_Dynamics} respectively. The combined state-space equations are given by:
-
+By combining the series converter, parallel converter, and transformer dynamics, the overall state-space model of the HDT can be compactly expressed as:
 \begin{align}
     \begin{aligned}
-        \dfrac{d}{dt}
         \begin{bmatrix}
-            x_s\\
-            x_p
+            \dot{x}_s\\[2pt]
+            \dot{x}_p\\[2pt]
+            \dot{i_Y}
         \end{bmatrix}
         &=
-        \underbrace{
+        \underbrace{\begin{bmatrix}
+            \mathbf{A}_s & \mathbf{0} & \mathbf{0}\\[4pt]
+            \mathbf{0} & \mathbf{A}_p & \mathbf{P}_{iY}\\[4pt]
+            \mathbf{P}_{vc}\mathbf{M} & -\tfrac{1}{L_Y}\mathbf{M} & -\tfrac{R_Y}{L_Y}\mathbf{I}
+        \end{bmatrix}}_{\mathbf{A}}
         \begin{bmatrix}
-            \mathbf{A}_s & \mathbf{P}_{iY}\mathbf{M}_p \\
-            \mathbf{P}_{vc}\mathbf{M}_s & \mathbf{A}_p
+            x_s\\[2pt]
+            x_p\\[2pt]
+            i_Y
         \end{bmatrix}
-        }_{\mathbf{A}}
-        \underbrace{
-        \begin{bmatrix}
-            x_s\\
-            x_p
-        \end{bmatrix}
-        }_{x}
-        +
-        \underbrace{
-        \begin{bmatrix}
-            \mathbf{B}_s & \mathbf{0} \\
-            \mathbf{0} & \mathbf{B}_p
-        \end{bmatrix}
-        }_{\mathbf{B}}
-        \underbrace{
-        \begin{bmatrix}
-            v_s\\
-            v_p 
-        \end{bmatrix}
-        }_{u}
         \\
         &+
-        \underbrace{
+        \underbrace{\begin{bmatrix}
+            \mathbf{B}_s & \mathbf{0}\\[4pt]
+            \mathbf{0} & \mathbf{B}_p\\[4pt]
+            \mathbf{0} & \mathbf{0}
+        \end{bmatrix}}_{\mathbf{B}}
         \begin{bmatrix}
-            \mathbf{0}\\
-            \mathbf{P}_{vg}
-        \end{bmatrix}
-        }_{\mathbf{P}_{vg}}
-        v_g
+            v_s\\[2pt]
+            v_p
+        \end{bmatrix} \nonumber
         +
-        \underbrace{
+        \underbrace{\begin{bmatrix}
+            \mathbf{0} & \mathbf{0}\\[4pt]
+            \mathbf{0} & \mathbf{P}_{iL}\\[4pt]
+            \mathbf{P}_{vg} & \mathbf{0}
+        \end{bmatrix}}_{\mathbf{P}}
         \begin{bmatrix}
-            \mathbf{0}\\
-            \mathbf{P}_{iL}
-        \end{bmatrix}
-        }_{\mathbf{P}_{iL}}
-        i_L\\
-        \dfrac{d\, x(t)}{dt} &= \mathbf{A}x(t) + \mathbf{B}u(t) + \mathbf{P}_{vg}v_g(t) + \mathbf{P}_{iL}i_L(t)\\
-        y(t) &= \mathbf{C}\,x(t)
+            v_g\\[2pt]
+            i_L
+        \end{bmatrix},
+        \label{eq:HDT_compact}
     \end{aligned}
 \end{align}
-where the matrices $\mathbf{M}_p = \begin{bmatrix}\mathbf{0} & \mathbf{I} & \mathbf{0}\end{bmatrix}$ and $\mathbf{M}_s = \begin{bmatrix}\mathbf{0} & \mathbf{I}\end{bmatrix}$ are used to select the appropriate states from the parallel and series converter state vectors respectively.
+with the overall state vector $x = \begin{bmatrix} x_s^T & x_p^T & i_Y^T \end{bmatrix}^T$ and input vector $u = \begin{bmatrix} v_s^T & v_p^T \end{bmatrix}^T$. The selection matrix $\mathbf{M} = \begin{bmatrix} \mathbf{0} & \mathbf{I} \end{bmatrix}$ extract the capacitor voltages $v_{cp}$ and $v_{cs}$ from the parallel and series converter states, respectively.
 
-The HDT system is discretized using a zero-order hold with a sampling time of $T_s = 5\,\mu s$. The discrete-time state-space model is given by:
+The HDT system is discretized using a zero-order hold which gives the following state-space model:
 \begin{align}
     \begin{aligned}
         x_{k + 1} &= \mathbf{A}_d x_k + \mathbf{B}_d u_k + \mathbf{P}_{vg,d} {v_g}_k + \mathbf{P}_{iL,d} {i_L}_k\\
@@ -191,7 +171,7 @@ where $\mathbf{A}_d = e^{\mathbf{A}T_s}$, $\mathbf{B}_d = \int_0^{T_s} e^{\mathb
 
 In most of the applications, there is a delay of one sampling period between the calculation of the control input and its application to the system. To account for this delay, the discrete-time state-space model is augmented with a new state representing the previous control input:
 \begin{equation}
-    m_k = u_{k + 1}
+    u_{k + 1} = m_k 
 \end{equation}
 This can be expressed in state-space form as:
 \begin{align}
