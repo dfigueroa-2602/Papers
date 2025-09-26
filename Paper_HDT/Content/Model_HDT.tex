@@ -72,23 +72,23 @@ The parallel converter is responsible for maintaining the dc-link voltage of the
 \begin{align}
     \dot{x}_p &=
         \underbrace{\begin{bmatrix}
-            -\tfrac{R_{fp}}{L_{fp}} \mathbf{I} & -\tfrac{1}{L_{fp}} \mathbf{I}\\[4pt]
+            -\tfrac{R_{fp}}{L_{fp}} \mathbf{I} & -\tfrac{1}{L_{fp}} \mathbf{I}\\
              \tfrac{1}{C_{fp}} \mathbf{I} & \mathbf{0}
         \end{bmatrix}}_{\mathbf{A}_p}
         x_p
         +
         \underbrace{\begin{bmatrix}
-            \tfrac{1}{L_{fp}}\mathbf{I}\\[4pt]
+            \tfrac{1}{L_{fp}}\mathbf{I}\\
             \mathbf{0}
         \end{bmatrix}}_{\mathbf{B}_p} v_p
         +
         \underbrace{\begin{bmatrix}
-            \mathbf{0}\\[4pt]
+            \mathbf{0}\\
             \tfrac{1}{C_{fp}}\mathbf{I}
-        \end{bmatrix}}_{\mathbf{P}_{iY}} i_Y
-        +
+        \end{bmatrix}}_{\mathbf{P}_{iY}} i_Y\\
+        &+
         \underbrace{\begin{bmatrix}
-            \mathbf{0}\\[4pt]
+            \mathbf{0}\\
             -\tfrac{1}{C_{fp}}\mathbf{I}
         \end{bmatrix}}_{\mathbf{P}_{iL}} i_L ,
     \label{eq:ParallelConverter}
@@ -119,26 +119,26 @@ By combining the series converter, parallel converter, and transformer dynamics,
 \begin{align}
     \begin{aligned}
         \begin{bmatrix}
-            \dot{x}_s\\[2pt]
-            \dot{x}_p\\[2pt]
+            \dot{x}_s\\
+            \dot{x}_p\\
             \dot{i_Y}
         \end{bmatrix}
         &=
         \underbrace{\begin{bmatrix}
-            \mathbf{A}_s & \mathbf{0} & \mathbf{0}\\[4pt]
-            \mathbf{0} & \mathbf{A}_p & \mathbf{P}_{iY}\\[4pt]
+            \mathbf{A}_s & \mathbf{0} & \mathbf{0}\\
+            \mathbf{0} & \mathbf{A}_p & \mathbf{P}_{iY}\\
             \mathbf{P}_{vc}\mathbf{M} & -\tfrac{1}{L_Y}\mathbf{M} & -\tfrac{R_Y}{L_Y}\mathbf{I}
         \end{bmatrix}}_{\mathbf{A}}
         \begin{bmatrix}
-            x_s\\[2pt]
-            x_p\\[2pt]
+            x_s\\
+            x_p\\
             i_Y
         \end{bmatrix}
         \\
         &+
         \underbrace{\begin{bmatrix}
-            \mathbf{B}_s & \mathbf{0}\\[4pt]
-            \mathbf{0} & \mathbf{B}_p\\[4pt]
+            \mathbf{B}_s & \mathbf{0}\\
+            \mathbf{0} & \mathbf{B}_p\\
             \mathbf{0} & \mathbf{0}
         \end{bmatrix}}_{\mathbf{B}}
         \begin{bmatrix}
@@ -147,12 +147,12 @@ By combining the series converter, parallel converter, and transformer dynamics,
         \end{bmatrix} \nonumber
         +
         \underbrace{\begin{bmatrix}
-            \mathbf{0} & \mathbf{0}\\[4pt]
-            \mathbf{0} & \mathbf{P}_{iL}\\[4pt]
+            \mathbf{0} & \mathbf{0}\\
+            \mathbf{0} & \mathbf{P}_{iL}\\
             \mathbf{P}_{vg} & \mathbf{0}
         \end{bmatrix}}_{\mathbf{P}}
         \begin{bmatrix}
-            v_g\\[2pt]
+            v_g\\
             i_L
         \end{bmatrix},
         \label{eq:HDT_compact}

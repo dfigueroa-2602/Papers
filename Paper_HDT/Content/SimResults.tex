@@ -31,23 +31,21 @@ In this section, the simulation results of the proposed control strategy are pre
     \label{tab:params}
 \end{table}
 
-Each of the load impacts are comprised by $47\ \Omega$ resistive load per phase, $2\ k\Omega$ resistive load in phase $a$ for the unbalanced load, and a three-phase diode bridge rectifier with a $47\ \Omega$ resistive load at its output for the non-linear load. The simulation results are shown in \Cref{fig:Sim_results}.
-
 \subsection{Grid Voltage Unbalanced Swell Compensation}
 
-From the instant $t = 10\ ms$ until $t = 260\ ms$, a three-phase unbalanced swell of $10\%$ the nominal value, in phase $b$ is applied to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). The proposed control strategy effectively compensates for the unbalanced swell, meaning that the parallel inverter injects the necessary voltage to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(d).
+From the instant $t = 20\ ms$ until $t = 220\ ms$, a three-phase unbalanced swell of $10\%$ the nominal value, in phase $b$ is applied to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). The nominal balanced resistive load connected to the HDT has a value of $47\ \Omega$. The proposed control strategy effectively compensates for the unbalanced swell, meaning that the parallel inverter injects the necessary voltage to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(d).
 
 \subsection{Load Impact}
 
-At $t = 60\ ms$, a three-phase balanced load impact of $47\ \Omega$ per phase is applied, as shown in \Cref{fig:Sim_results}.(b). In this case, the parallel converter injects the necessary current to maintain the transformer secondary side current, in particular after the load impact, as shown in \Cref{fig:Sim_results}.(e).
+At $t = 60\ ms$, a three-phase balanced load impact of $47\ \Omega$ per phase is applied, as shown in \Cref{fig:Sim_results}.(b). In this case, the parallel converter supplies the needed current to provide additional power so the DC-link voltage will be balanced.
 
 \subsection{Unbalanced Load Compensation}
 
-Following the load impacts, at $t = 100\ ms$ an unbalanced load is applied, where phase $a$ has a load of $2\ k\Omega$ and phases $b$ and $c$ have a load of $47\ \Omega$, as shown in \Cref{fig:Sim_results}.(f). The parallel converter injects the necessary current to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(e).
+Following the load impacts, at $t = 100\ ms$ an unbalanced load of $94\ \Omega$ is connected in parallel to the existing loads. The parallel converter injects the necessary current to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(e). Therefore, the control strategy manages to keep $i_Y$ with balanced magnitudes, as is obtained in \Cref{fig:Sim_results}.(f)
 
 \subsection{Non-linear Load Compensation}
 
-At $t = 140\ ms$, a three-phase diode bridge rectifier with a $47\ \Omega$ resistive load at its output is applied, as shown in \Cref{fig:Sim_results}.(f). In this case, the parallel converter reference is mainly composed by the fundamental component of the load current, which is extracted using a notch filter. The proposed control strategy manages to compensate this disturbance, maintaining the transformer secondary side current sinusoidal and balanced, as shown in \Cref{fig:Sim_results}.(d).
+At $t = 140\ ms$, a three-phase diode bridge rectifier with a $47\ \Omega$ resistive load at its output is applied, as shown in \Cref{fig:Sim_results}.(f). In this case, additionally to the existing DC-link control, the reference is calculated by the actuation of the harmonics compensation control loop, which compensates the harmonics that the non-linear load injects to the secondary side, which can be seen in the \Cref{fig:Sim_results}.(f). The proposed control strategy manages to compensate this disturbance, maintaining the transformer secondary side current sinusoidal and balanced, as shown in \Cref{fig:Sim_results}.(d).
 
-\subsection{Third Harmonic Compensation}
-Finally, at $t = 200\ ms$, a third harmonic component is added to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). In this case, the series converter reference is mainly composed by the fundamental and third harmonic components of the grid voltage, which are extracted using a notch filter. The proposed control strategy effectively compensates for this disturbance, maintaining the transformer secondary side current sinusoidal and balanced, as shown in \Cref{fig:Sim_results}.(d).
+\subsection{Grid Voltage 3rd Harmonic Distortion}
+Finally, at $t = 180\ ms$, a third harmonic component is added to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). In this case, the series converter reference is composed by the grid voltage harmonics plus the existing voltage swell compensation, as illustrated in \Cref{fig:Sim_results}.(b). The proposed control strategy effectively compensates for this disturbance, maintaining a clean tramsfpr,er secondary side current sinusoidal and balanced, as shown in \Cref{fig:Sim_results}.(d).
