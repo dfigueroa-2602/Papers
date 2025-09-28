@@ -16,7 +16,7 @@ With the state-space model of the HDT defined, the next step is to design a cont
 
 \subsection{Proposed Control Strategy}
 
-The proposed control strategy is based on a state feedback controller which is designed using the augmented state-space model of the HDT, defined in \eqref{eq:AugmentedModel}. The control strategy aims to achieve zero steady-state error for sinusoidal references. For that reason, the system is expanded using the following resonant terms:
+The proposed control strategy is based on a state-feedback controller which is designed using the augmented state-space model of the HDT, defined in \eqref{eq:AugmentedModel}. The control strategy aims to achieve zero steady-state error for sinusoidal references. To achieve this, the system is expanded with the following resonant terms:
 \begin{equation}
     \dot{\rho}_1 = 
     \underbrace{
@@ -34,7 +34,7 @@ The proposed control strategy is based on a state feedback controller which is d
     }_{\mathbf{B}_{r1}}
     e_1
 \end{equation}
-where $\omega$ is the nominal angular frequency, $\rho_1$ and $e$ are the first resonant and error components respectively. Each of the references signals has two resonant states associated with it, meaning that for the HDT control, there are eight resonant states in total (4 for the $ev_{cs,\alpha\beta}$ and 4 for the $i_{fp,\alpha\beta}$). This can be expressed as:
+where $\omega$ is the nominal angular frequency, $\rho_1$ and $e$ are the first resonant and error components respectively. Each reference signal has two associated resonant states. Therefore, HDT control requires eight resonant states in total (four for $ev_{cs,\alpha\beta}$ and four for $i_{fp,\alpha\beta}$). This can be expressed as:
 \begin{align}
     \begin{aligned}
         \dot{\rho} &= \underbrace{\text{diag}(\mathbf{A}_{r1}, \mathbf{A}_{r1} \mathbf{A}_{r1}, \mathbf{A}_{r1})}_{\mathbf{A}_{r}}\rho\\
@@ -88,7 +88,7 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
     \end{aligned}
 \end{align}
 where the matrix $\mathbf{H}_x$ selects the states with reference following and $r_k$ is the reference vector.
-Then, the state feedback controller is designed using the discrete LQR approach given by:
+Then, the state-feedback controller is designed using the discrete LQR approach given by:
 \begin{equation}
     \mathbf{K} = \text{dlqr}(\mathbf{A}_{d,\text{aug}}, \mathbf{B}_{d,\text{aug}}, \mathbf{Q}, \mathbf{R})
 \end{equation}
@@ -97,13 +97,13 @@ where $\mathbf{Q}\in\mathbb{R}^{11}$ and $\mathbf{R}\in\mathbb{R}^4 = \mathbf{I}
     m_k = -\mathbf{K}_x
     x_k - \mathbf{K}_u u_k - \mathbf{K}_r \rho_k
 \end{equation}
-where $\mathbf{K}_x$ is the state feedback gain matrix, $\mathbf{K}_u$ is the previous control input gain matrix and $\mathbf{K}_r$ is the resonant states gain matrix.
+where $\mathbf{K}_x$ is the state-feedback gain matrix, $\mathbf{K}_u$ is the previous control input gain matrix and $\mathbf{K}_r$ is the resonant states gain matrix.
 
-The series converter reference is calculated as the difference between the nominal value of the grid voltage and the actual value and the parallel converter reference is the sum of the DC-link control loop, which uses the instantaneous power theory~\cite{akagiControlStrategyActive1986}, and the harmonic elimination control loop. This is based in the work from Carreno et al.~\cite{carrenoStateFeedbackControlHybrid2024}.
+The series converter reference is calculated as the difference between the nominal value of the grid voltage and the actual value and the parallel converter reference is the sum of the DC-link control loop, which uses the instantaneous power theory~\cite{akagiControlStrategyActive1986}, and the harmonic elimination control loop. This is based on the work of Carreno et al.~\cite{carrenoStateFeedbackControlHybrid2024}.
 
 \subsection{Particle Swarm Optimization}
 
-To facilitate the tuning of the state feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of powers $q_{x,j}(i)$, where $x$, $j$ and $i$ are the state, particle and iteration numbers. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
+To facilitate the tuning of the state-feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of powers $q_{x,j}(i)$, where $x$, $j$ and $i$ are the state, particle and iteration numbers. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
 \begin{align}
     \begin{aligned}
         v_j(i + 1) &= K_{ap}\left(v_j(i) + c_1 r_1 (pbest_j - x_j(i)) \right.\\
@@ -117,7 +117,7 @@ where $v_j(i)$, $x_j(i)$, $pbest_j$ and $gbest$ are the velocity, position, the 
 \end{equation}
 where $\phi = c_1 + c_2 > 4$ is a constant that ensures convergence.
 
-The PSO algorithm iteratively updates the positions and velocities of the particles until the maximum of iteration number is reached. The best position found by the swarm is considered the optimal solution to the optimization problem.
+The PSO algorithm iteratively updates the positions and velocities of the particles until the maximum number of iterations is reached. The best position found by the swarm is considered the optimal solution to the optimization problem.
 
 \subsection{PSO Performance Index}
 
@@ -127,11 +127,11 @@ The performance index used for the PSO optimization is a cost function that cons
 \end{equation}
 where $N$ is the number of samples in the simulation, $\Delta u_k$ is the change in control input at sample $k$, and $\beta$ is a weighting factor that balances the importance of the transient and steady-state performance, which is the only parameter that should be tuned according to the simulation results from the iterations process.
 
-The assumptions that are made when running the PSO algorithm is that the penalties for the $\alpha$ and $\beta$ components are equal, including the resonant terms for each of the components. For that reason, the search of space is shrunk from the 22 states to the half. Also, to simplify the search space of the swarm, the particles are applied as powers of the state weights. This can be expressed as:
+The assumptions made when running the PSO algorithm are that the penalties for the $\alpha$ and $\beta$ components are equal, including the resonant terms for each of the components. For that reason, the search of space is reduced from 22 states to half. Also, to simplify the search space of the swarm, the particles are represented as exponents of the state weights. This can be expressed as:
 \begin{equation}
     \mathbf{Q} = \text{diag}\left\{10^{q_1}\mathbf{I}, 10^{q_2}\mathbf{I}, ..., 10^{q_{11}}\mathbf{I}\right\}
 \end{equation}
-The optimization variables lie within a define range including the absorbing walls boundaries~\cite{robinsonParticleSwarmOptimization2004} which allows obtaining a not-large LQR gain. The PSO parameters used for the optimization are listed in \Cref{tab:PSO_Parameters}.
+The optimization variables lie within a defined range including the absorbing walls boundaries~\cite{robinsonParticleSwarmOptimization2004} which allows obtaining a not-large LQR gain. The PSO parameters used for the optimization are listed in \Cref{tab:PSO_Parameters}.
 
 \begin{table}[t!]
     \centering

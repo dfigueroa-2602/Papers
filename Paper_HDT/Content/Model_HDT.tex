@@ -158,16 +158,16 @@ By combining the series converter, parallel converter, and transformer dynamics,
         \label{eq:HDT_compact}
     \end{aligned}
 \end{align}
-with the overall state vector $x = \begin{bmatrix} x_s^T & x_p^T & i_Y^T \end{bmatrix}^T$ and input vector $u = \begin{bmatrix} v_s^T & v_p^T \end{bmatrix}^T$. The selection matrix $\mathbf{M} = \begin{bmatrix} \mathbf{0} & \mathbf{I} \end{bmatrix}$ extract the capacitor voltages $v_{cp}$ and $v_{cs}$ from the parallel and series converter states, respectively.
+with the overall state vector $x = \begin{bmatrix} x_s^T & x_p^T & i_Y^T \end{bmatrix}^T$, disturbance vector $d = \begin{bmatrix} v_g & i_L\end{bmatrix}$ and input vector $u_k = \begin{bmatrix} v_s^T & v_p^T \end{bmatrix}^T$. The selection matrix $\mathbf{M} = \begin{bmatrix} \mathbf{0} & \mathbf{I} \end{bmatrix}$ extract the capacitor voltages $v_{cp}$ and $v_{cs}$ from the parallel and series converter states, respectively.
 
 The HDT system is discretized using a zero-order hold which gives the following state-space model:
 \begin{align}
     \begin{aligned}
-        x_{k + 1} &= \mathbf{A}_d x_k + \mathbf{B}_d u_k + \mathbf{P}_{vg,d} {v_g}_k + \mathbf{P}_{iL,d} {i_L}_k\\
+        x_{k + 1} &= \mathbf{A}_d x_k + \mathbf{B}_d u_k + \mathbf{P}_d d_k\\
         y_k &= \mathbf{C} x_k
     \end{aligned}
 \end{align}
-where $\mathbf{A}_d = e^{\mathbf{A}T_s}$, $\mathbf{B}_d = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{B}$, $\mathbf{P}_{vg,d} = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}_{vg}$, $\mathbf{P}_{iL,d} = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}_{iL}$, and $\mathbf{C} = \mathbb{I}$.
+where $\mathbf{A}_d = e^{\mathbf{A}T_s}$, $\mathbf{B}_d = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{B}$, $\mathbf{P}_d = \int_0^{T_s} e^{\mathbf{A}\tau} d\tau \mathbf{P}$, and $\mathbf{C} = \mathbb{I}$.
 
 In most of the applications, there is a delay of one sampling period between the calculation of the control input and its application to the system. To account for this delay, the discrete-time state-space model is augmented with a new state representing the previous control input:
 \begin{equation}
