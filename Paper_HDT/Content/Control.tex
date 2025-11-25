@@ -16,7 +16,7 @@ With the state-space model of the HDT defined, the next step is to design a cont
 
 \subsection{Proposed Control Strategy}
 
-The proposed control strategy is based on a state-feedback controller which is designed using the augmented state-space model of the HDT, defined in \eqref{eq:AugmentedModel}. The control strategy aims to achieve zero steady-state error for sinusoidal references. To achieve this, the system is expanded with the following resonant terms:
+The proposed control strategy is based on a state-feedback controller which is designed using the augmented state-space model of the HDT, defined in \eqref{eq:AugmentedModel}. The control strategy aims to achieve zero steady-state error for sinusoidal references. To achieve this objective, the system is augmented with the following resonant terms:
 \begin{equation}
     \dot{\rho}_1 = 
     \underbrace{
@@ -34,7 +34,7 @@ The proposed control strategy is based on a state-feedback controller which is d
     }_{\mathbf{B}_{r1}}
     e_1
 \end{equation}
-where $\omega$ is the nominal angular frequency, $\rho_1$ and $e$ are the first resonant and error components respectively. Each reference signal has two associated resonant states. Therefore, HDT control requires eight resonant states in total (four for $ev_{cs,\alpha\beta}$ and four for $i_{fp,\alpha\beta}$). This can be expressed as:
+where $\omega$ is the nominal angular frequency, $\rho_1$ and $e$ are the first resonant and error components respectively. Each reference signal has two associated resonant states. Therefore, HDT control requires eight resonant states in total, four for $ev_{cs,\alpha\beta}$ and four for $i_{fp,\alpha\beta}$. This can be expressed as:
 \begin{align}
     \begin{aligned}
         \dot{\rho} &= \underbrace{\text{diag}(\mathbf{A}_{r1}, \mathbf{A}_{r1} \mathbf{A}_{r1}, \mathbf{A}_{r1})}_{\mathbf{A}_{r}}\rho\\
@@ -87,7 +87,7 @@ These resonant states are then discretized using a ZOH giving the matrices $\mat
         e_k = r_k - \mathbf{H}_x x_k
     \end{aligned}
 \end{align}
-where the matrix $\mathbf{H}_x$ selects the states with reference following and $r_k$ is the reference vector.
+where the matrix $\mathbf{H}_x$ selects the states that must follow reference signals, and $r_k$ is the reference vector.
 Then, the state-feedback controller is designed using the discrete LQR approach given by:
 \begin{equation}
     \mathbf{K} = \text{dlqr}(\mathbf{A}_{d,\text{aug}}, \mathbf{B}_{d,\text{aug}}, \mathbf{Q}, \mathbf{R})
@@ -103,7 +103,7 @@ The series converter reference is calculated as the difference between the nomin
 
 \subsection{Particle Swarm Optimization}
 
-To facilitate the tuning of the state-feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm is employed to optimize the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of powers $q_{x,j}(i)$, where $x$, $j$ and $i$ are the state, particle and iteration numbers. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
+To facilitate the tuning of the state-feedback gain matrix $\mathbf{K}$ by adjusting $\mathbf{Q}$, the PSO algorithm optimizes the weights associated with each state in the cost function. The PSO algorithm is a population-based optimization technique inspired by the social behavior of birds and fish~\cite{clercSwarmQueenDeterministic1999}. It consists of a swarm of particles, where each particle represents a potential solution to the optimization problem, in this case, the vector of powers $q_{x,j}(i)$, where $x$, $j$ and $i$ are the state, particle and iteration numbers. The particles move through the search space, updating their positions based on their own experience and the experience of their neighbors. The velocity and position of each particle are updated using the following equations:
 \begin{align}
     \begin{aligned}
         v_j(i + 1) &= K_{ap}\left(v_j(i) + c_1 r_1 (pbest_j - x_j(i)) \right.\\
@@ -111,7 +111,7 @@ To facilitate the tuning of the state-feedback gain matrix $\mathbf{K}$ by adjus
         x_j(i + 1) &= x_j(i) + v_j(i + 1)
     \end{aligned}
 \end{align}
-where $v_j(i)$, $x_j(i)$, $pbest_j$ and $gbest$ are the velocity, position, the best position and global-best position of the particle $j$ at iteration $i$. $c_1$ and $c_2$ are cognitive and social acceleration coefficients, $r_1$ and $r_2$ are random numbers uniformly distributed in the range [0, 1], and $K_{ap}$ is the constriction factor given by:
+where $v_j(i)$, $x_j(i)$, $pbest_j$ and $gbest$ are the velocity, position, the best position and global-best position of the particle $j$ at iteration $i$. $c_1$ and $c_2$ are the cognitive and social acceleration coefficients, $r_1$ and $r_2$ are random numbers uniformly distributed in the range [0, 1], and $K_{ap}$ is the constriction factor given by:
 \begin{equation}
     K_{ap} = \dfrac{2}{\left|2 - \phi - \sqrt{\phi^2 - 4\phi}\right|}
 \end{equation}
@@ -151,7 +151,7 @@ The optimization variables lie within a defined range including the absorbing wa
     \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[b!]
     \centering
     \caption{Optimized state weight exponents $q_i$ from PSO.}
     \label{tab:PSO_Weights}

@@ -21,49 +21,51 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{Blaabjerg2023}
-F.~Blaabjerg, Y.~Yang, K.~A. Kim, and J.~Rodriguez, ``Power electronics
-  technology for large-scale renewable energy generation,'' \emph{Proceedings
-  of the IEEE}, vol. 111, no.~4, pp. 335--355, 2023.
+\bibitem{naderiDynamicModelingStability2023}
+M.~Naderi, Y.~Khayat, Q.~Shafiee, F.~Blaabjerg, and H.~Bevrani, ``Dynamic
+  modeling, stability analysis and control of interconnected microgrids: {{A}}
+  review,'' \emph{Applied Energy}, vol. 334, p. 120647, Mar. 2023.
 
-\bibitem{Najafzadeh2021}
+\bibitem{najafzadehRecentContributionsFuture2021}
 M.~Najafzadeh, R.~Ahmadiahangar, O.~Husev, I.~Roasto, T.~Jalakas, and
-  A.~Blinov, ``Recent contributions, future prospects and limitations of
-  interlinking converter control in hybrid ac/dc microgrids,'' \emph{IEEE
-  Access}, vol.~9, pp. 7960--7984, 2021.
+  A.~Blinov, ``Recent {{Contributions}}, {{Future Prospects}} and
+  {{Limitations}} of {{Interlinking Converter Control}} in {{Hybrid AC}}/{{DC
+  Microgrids}},'' \emph{IEEE Access}, vol.~9, pp. 7960--7984, 2021.
 
-\bibitem{Sepasi2023}
-S.~Sepasi, C.~Talichet, and A.~S. Pramanik, ``Power quality in microgrids: A
-  critical review of fundamentals, standards, and case studies,'' \emph{IEEE
-  Access}, vol.~11, pp. 108\,493--108\,531, 2023.
+\bibitem{sepasiPowerQualityMicrogrids2023}
+S.~Sepasi, C.~Talichet, and A.~S. Pramanik, ``Power {{Quality}} in
+  {{Microgrids}}: {{A Critical Review}} of {{Fundamentals}}, {{Standards}}, and
+  {{Case Studies}},'' \emph{IEEE Access}, vol.~11, pp. 108\,493--108\,531,
+  2023.
 
-\bibitem{Engelbrecht2023}
+\bibitem{engelbrechtSTATCOMTechnologyEvolution2023}
 T.~Engelbrecht, A.~Isaacs, S.~Kynev, J.~Matevosyan, B.~Niemann, A.~J. Owens,
-  B.~Singh, and A.~Grondona, ``Statcom technology evolution for tomorrow’s
-  grid: E-statcom, statcom with supercapacitor-based active power capability,''
-  \emph{IEEE Power and Energy Magazine}, vol.~21, no.~2, pp. 30--39, 2023.
+  B.~Singh, and A.~Grondona, ``{{STATCOM Technology Evolution}} for
+  {{Tomorrow}}'s {{Grid}}: {{E-STATCOM}}, {{STATCOM With Supercapacitor-Based
+  Active Power Capability}},'' \emph{IEEE Power and Energy Magazine}, vol.~21,
+  no.~2, pp. 30--39, Mar. 2023.
 
-\bibitem{Kandil2020}
-T.~Kandil and M.~Adel~Ahmed, ``Control and operation of dynamic voltage
-  restorer with online regulated dc-link capacitor in microgrid system,''
+\bibitem{kandilControlOperationDynamic2020}
+T.~Kandil and M.~Adel~Ahmed, ``Control and {{Operation}} of {{Dynamic Voltage
+  Restorer With Online Regulated DC-Link Capacitor}} in {{Microgrid System}},''
   \emph{Canadian Journal of Electrical and Computer Engineering}, vol.~43,
   no.~4, pp. 331--341, 2020.
 
-\bibitem{Mishra2020}
+\bibitem{mishraPSOGWOOptimizedFractional2020}
 A.~K. Mishra, S.~R. Das, P.~K. Ray, R.~K. Mallick, A.~Mohanty, and D.~K.
-  Mishra, ``Pso-gwo optimized fractional order pid based hybrid shunt active
-  power filter for power quality improvements,'' \emph{IEEE Access}, vol.~8,
-  pp. 74\,497--74\,512, 2020.
+  Mishra, ``{{PSO-GWO Optimized Fractional Order PID Based Hybrid Shunt Active
+  Power Filter}} for {{Power Quality Improvements}},'' \emph{IEEE Access},
+  vol.~8, pp. 74\,497--74\,512, 2020.
 
-\bibitem{Fujita1998}
-H.~Fujita and H.~Akagi, ``The unified power quality conditioner: the
+\bibitem{fujitaUnifiedPowerQuality1998}
+H.~Fujita and H.~Akagi, ``The unified power quality conditioner: The
   integration of series- and shunt-active filters,'' \emph{IEEE Transactions on
-  Power Electronics}, vol.~13, no.~2, pp. 315--322, 1998.
+  Power Electronics}, vol.~13, no.~2, pp. 315--322, Mar. 1998.
 
-\bibitem{Huber2019}
-J.~E. Huber and J.~W. Kolar, ``Applicability of solid-state transformers in
-  today’s and future distribution grids,'' \emph{IEEE Transactions on Smart
-  Grid}, vol.~10, no.~1, pp. 317--326, 2019.
+\bibitem{huberApplicabilitySolidStateTransformers2019}
+J.~E. Huber and J.~W. Kolar, ``Applicability of {{Solid-State Transformers}} in
+  {{Today}}'s and {{Future Distribution Grids}},'' \emph{IEEE Transactions on
+  Smart Grid}, vol.~10, no.~1, pp. 317--326, Jan. 2019.
 
 \bibitem{carrenoConfigurationsPowerTopologies2021}
 A.~Carreno, M.~Perez, C.~Baier, A.~Huang, S.~Rajendran, and M.~Malinowski,
@@ -71,15 +73,15 @@ A.~Carreno, M.~Perez, C.~Baier, A.~Huang, S.~Rajendran, and M.~Malinowski,
   Distribution Transformers}},'' \emph{Energies}, vol.~14, no.~5, p. 1215, Feb.
   2021.
 
-\bibitem{haj-maharsiHybridDistributionTransformer2010}
-M.~Y. {Haj-Maharsi}, L.~Tang, R.~Gutierrez, and S.~Bala, ``Hybrid distribution
-  transformer with ac \& dc power capabilities,'' US Patent
-  US20\,100\,201\,338A1, Aug., 2010.
-
 \bibitem{matelskiBadaniaEksperymentalneTransformatora2023}
 W.~Matelski, ``{Badania eksperymentalne transformatora hybrydowego jako
-  kondycjonera napi{\k e}cia w sieciach typu TN},'' \emph{PRZEGL{\k A}D
+  kondycjonera napi\k ecia w sieciach typu TN},'' \emph{PRZEGL\k AD
   ELEKTROTECHNICZNY}, vol.~1, no.~5, pp. 233--238, May 2023.
+
+\bibitem{liuSimplifiedDynamicModels2025}
+Y.~Liu, Y.~Xue, L.~Yu, and D.~Liang, ``Simplified dynamic models and harmonics
+  relationships of hybrid distribution transformer,'' \emph{Electric Power
+  Systems Research}, vol. 249, p. 112001, Dec. 2025.
 
 \bibitem{costaFourlegMatrixConverter2022}
 P.~Costa, G.~Para{\'i}so, S.~F. Pinto, and J.~F. Silva, ``A four-leg matrix
@@ -106,6 +108,12 @@ A.~Carreno, M.~A. Perez, and M.~Malinowski, ``State-{{Feedback Control}} of a
   {{Distribution Grid}},'' \emph{IEEE Transactions on Industrial Electronics},
   vol.~71, no.~2, pp. 1147--1157, Feb. 2024.
 
+\bibitem{kavehApplicationMetaHeuristicAlgorithms2023}
+M.~Kaveh and M.~S. Mesgari, ``Application of {{Meta-Heuristic Algorithms}} for
+  {{Training Neural Networks}} and {{Deep Learning Architectures}}: {{A
+  Comprehensive Review}},'' \emph{Neural Processing Letters}, vol.~55, no.~4,
+  pp. 4519--4622, Aug. 2023.
+
 \bibitem{ufnalskiParticleSwarmOptimization2015}
 B.~Ufnalski, A.~Kaszewski, and L.~M. Grzesiak, ``Particle {{Swarm
   Optimization}} of the {{Multioscillatory LQR}} for a {{Three-Phase Four-Wire
@@ -113,12 +121,10 @@ B.~Ufnalski, A.~Kaszewski, and L.~M. Grzesiak, ``Particle {{Swarm
   Transactions on Industrial Electronics}, vol.~62, no.~1, pp. 484--493, Jan.
   2015.
 
-\bibitem{galcckiParticleSwarmOptimization2018}
-A.~Galccki, M.~Michalczuk, B.~Ufnalski, and L.~M. Grzesiak, ``Particle {{Swarm
-  Optimization}} of the {{State Feedback Current Controller}} with
-  {{Oscillatory Terms}} for a {{Three-Phase Grid-Tie Converter}},'' in
-  \emph{2018 20th {{European Conference}} on {{Power Electronics}} and
-  {{Applications}} ({{EPE}}'18 {{ECCE Europe}})}, Sep. 2018, pp. P.1--P.10.
+\bibitem{chenFeedbackLinearizedOptimal2021}
+C.-C. Chen and Y.-T. Chen, ``Feedback {{Linearized Optimal Control Design}} for
+  {{Quadrotor With Multi-Performances}},'' \emph{IEEE Access}, vol.~9, pp.
+  26\,674--26\,695, 2021.
 
 \bibitem{akagiControlStrategyActive1986}
 H.~Akagi, A.~Nabae, and S.~Atoh, ``Control {{Strategy}} of {{Active Power

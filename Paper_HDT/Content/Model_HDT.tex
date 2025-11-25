@@ -9,7 +9,7 @@
 The HDT configuration used in this paper is shown in \Cref{fig:HDT_Transformer}. It consists of a traditional DT connected to two back-to-back VSCs: a series converter connected to the primary of the DT through a CT, and a parallel converter connected in parallel to the load, which is connected to the secondary of the DT. All the state-space equations are derived in the $\alpha\beta$ reference frame, until otherwise specified.
 
 \subsection{Series Converter}
-The objectives of the series converter are to compensate for voltage disturbances, e.g. sags, swells and harmonics that may occur in the grid. This is done by injecting a voltage in series with the grid through the CT. The dynamics of the series converter are given by the following state-space equation:
+The objectives of the series converter are to compensate for voltage disturbances, e.g. sags, swells, and harmonics that may occur in the grid. This is done by injecting a voltage in series with the grid through the CT. The dynamics of the series converter are given by the following state-space equation:
 
 \begin{equation}
     \dot{x}_s =
@@ -35,7 +35,7 @@ The objectives of the series converter are to compensate for voltage disturbance
     }_{\mathbf{P}_{is}}
     i_s \label{eq:SeriesConverter_Dynamics}
 \end{equation}
-where $x_s = \begin{bmatrix} i_{fs} & v_{cs} \end{bmatrix}^T$ is the state vector and $i_s$ is the currents that circulates to the CT. The parameters $R_{fs}$, $L_{fs}$, and $C_{fs}$ are the series converter filter resistance, inductance, and capacitance respectively.
+where $x_s = \begin{bmatrix} i_{fs} & v_{cs} \end{bmatrix}^T$ is the state vector and $i_s$ is the current that circulates to through the CT. The parameters $R_{fs}$, $L_{fs}$, and $C_{fs}$ are the series converter filter resistance, inductance, and capacitance respectively.
 
 The current $i_s$ is related to the transformer secondary side current $i_Y$ through $i_s = N_{CT} i_g$ relationship, where $N_{CT}$ is the CT turns ratio and $i_g$ is the grid current. The grid current can be expressed in terms of the transformer secondary side current and the parallel converter capacitor current as:
 \begin{equation}

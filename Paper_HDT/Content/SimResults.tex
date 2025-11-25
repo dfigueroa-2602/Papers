@@ -2,7 +2,7 @@
 
 In this section, the simulation results of the proposed control strategy are presented. The simulations are performed using MATLAB/Simulink, and the system parameters are listed in Table \ref{tab:params}. The proposed control strategy is tested under grid unbalanced swell, load impact, load unbalance, and non-linear load conditions.
 
-\begin{table}[h!]
+\begin{table}[t!]
     \centering
     \caption{System Parameters}
     \begin{tabular}{|c|c|c|}
@@ -33,11 +33,11 @@ In this section, the simulation results of the proposed control strategy are pre
 
 \subsection{Grid Voltage Unbalanced Swell Compensation}
 
-From the instant $t = 20\ ms$ until $t = 220\ ms$, a three-phase unbalanced swell of $10\%$ the nominal value, in phase $b$ is applied to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). The nominal balanced resistive load of $47\ \Omega$ is connected to the HDT. The proposed control strategy effectively compensates for the unbalanced swell, meaning that the parallel inverter injects the necessary voltage to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(d).
+From the instant $t = 20\ ms$ until $t = 220\ ms$, a three-phase unbalanced swell of $10\%$ of the nominal value, in phase $b$ is applied to the grid voltage, as shown in \Cref{fig:Sim_results}.(a). The nominal balanced resistive load of $47\ \Omega$ is connected to the HDT. The proposed control strategy effectively compensates for the unbalanced swell, meaning that the parallel inverter injects voltage needed to maintain a balanced transformer secondary side current, as shown in \Cref{fig:Sim_results}.(d).
 
 \subsection{Load Impact}
 
-At $t = 60\ ms$, a three-phase balanced load impact of $47\ \Omega$ per phase is applied, as shown in \Cref{fig:Sim_results}.(b). In this case, the parallel converter supplies the needed current to provide additional power so the DC-link voltage will be balanced.
+At $t = 60\ ms$, a three-phase balanced load impact of $47\ \Omega$ per phase is applied, as shown in \Cref{fig:Sim_results}.(b). In this case, the parallel converter supplies the needed current to provide additional power so the DC-link voltage remains regulated.
 
 \subsection{Unbalanced Load Compensation}
 
